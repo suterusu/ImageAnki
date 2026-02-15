@@ -1,0 +1,885 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 63;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02980E45339B70189B7634D3 /* SwiftDataRepository_StudySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2CC9139EDFE0BFF25F064 /* SwiftDataRepository_StudySession.swift */; };
+		057A6C1AFC1D88609049A62F /* RepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F10639CB682F8F9DE88F3 /* RepositoryError.swift */; };
+		065583D7AE6DCAE1967A51CB /* WordChallengeStartScreenViewEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = B412631D3745F07220FF4832 /* WordChallengeStartScreenViewEffect.swift */; };
+		083DC3FF6FFABA385858B8A8 /* AsyncStream+TestSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ECB1B4B332B63AE4D94EB6 /* AsyncStream+TestSupport.swift */; };
+		084644F8450E2439DF97E465 /* ProblemListScreenViewEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8413218131A1A4B883C149 /* ProblemListScreenViewEffect.swift */; };
+		2FAAB1AB33792B4AE97E8B67 /* WordBiMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1024F1A34E9C67B01B02C1 /* WordBiMapper.swift */; };
+		403CFA7799958669AD0B3C43 /* WordChallengeStartScreenViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30374A366782EAF8F5A121EA /* WordChallengeStartScreenViewState.swift */; };
+		4426E380D6EA4FA8A29D374A /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D683E1582EE4E3D5D6E5DD3 /* RootView.swift */; };
+		44C4659DB7015CE25D719FC5 /* WordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511DEF8FB49410EF0B048413 /* WordRepository.swift */; };
+		474A091671E941190BDDCE7B /* StudyMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876037D31E94A8C066676EEA /* StudyMode.swift */; };
+		4914C509A51C258F6C5A8CF9 /* Repository_Failing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C569018ACB69BCDBF52807 /* Repository_Failing.swift */; };
+		49532569C879A98009338251 /* ProblemListScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06209D9CA06B264AF1477EA /* ProblemListScreenView.swift */; };
+		4AB080DE78C5C1D8D51129B4 /* AnswerJudgment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66623EFA4FA96F202905D5EC /* AnswerJudgment.swift */; };
+		4CDE03D79AE2F5378F4A43CB /* WordPersistentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D815F0D1B808BC5044B7CA7 /* WordPersistentModel.swift */; };
+		68C743FCEC73105340DF762C /* StudySessionPersistentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC8C34CF5CCBA67BBAEA6D /* StudySessionPersistentModel.swift */; };
+		6A0B596DC33FF012D5EC81B5 /* WordChallengeStartScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4B6A8332E8375EBF69D0BD /* WordChallengeStartScreenView.swift */; };
+		6E3B8102A993C33543AB0AB2 /* EffectStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32933851923A5003B487AE22 /* EffectStream.swift */; };
+		7236C06F687BB25FD3D051C2 /* WordChallengeStartScreenUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4333FB8383EE7492E3B6F6D /* WordChallengeStartScreenUseCase.swift */; };
+		748C205A7DF933D8CCD0ECE7 /* ProblemListScreenUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90D5C1517794AA002827C0E /* ProblemListScreenUseCase.swift */; };
+		77A884CC6CEBB1D5B7888A06 /* SwiftDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F3A8E53209CCB3CBDC575E /* SwiftDataRepository.swift */; };
+		82378826C66B63488CA4F61E /* DomainObject+TestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F37B9AAC08EA0F09535ED /* DomainObject+TestFactory.swift */; };
+		85DDA29430E31B699BDE382E /* StudySessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85AC7EF12F3CC2D136E40CF /* StudySessionRepository.swift */; };
+		895CBEE6617681A9D5F388A9 /* StudyCardScreenViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0803406C705685922EFC00C1 /* StudyCardScreenViewState.swift */; };
+		89C6EB487AEC771FB21995A9 /* StudyCardScreenUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6243C6C0A8B836CFE3CF5B9F /* StudyCardScreenUseCaseTests.swift */; };
+		8C717D77E5459ED8C43C49BD /* StudyCardScreenUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0F1FF44FB372DFE9FAE36 /* StudyCardScreenUseCase.swift */; };
+		934CBA29B6230B5C8DC0D5E8 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B47F9363CBE7D34F7AD0812 /* ViewProtocol.swift */; };
+		94C43DC6276DA332291B1FDF /* StudySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BD43195C731945623EFB70 /* StudySession.swift */; };
+		9E636B546DDDEDED7FE4C58A /* SwiftDataRepository_Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = C229110519EE65CE12ED8D3C /* SwiftDataRepository_Word.swift */; };
+		9FCB4E1FBEE929BE0A64073C /* BiMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3AD3B30F22E02366CF5768 /* BiMapper.swift */; };
+		A6733907DC4FECB0ED80245B /* WordChallengeStartScreenUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3030904B98CC10DEC6611A /* WordChallengeStartScreenUseCaseTests.swift */; };
+		B098A0A10AF64B196AFD9D57 /* ProblemListScreenViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31A572148861E6EB2DBCBBC /* ProblemListScreenViewState.swift */; };
+		B70140384D2FE8EB483B9DDF /* RepositoryBaseFunctionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE79FC9561C31CF9559ED43 /* RepositoryBaseFunctionProtocol.swift */; };
+		BAE134E340446EFA90374D2B /* StudyResultScreenViewEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9DE9395471D149978AD3CF /* StudyResultScreenViewEffect.swift */; };
+		C0DE6D5A3F98D5D51FC34295 /* StudyCardScreenViewEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB0F2AF12610C25027A2DE3 /* StudyCardScreenViewEffect.swift */; };
+		D0F9A8BC332F557991187CAB /* ProblemListScreenUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E939A551C07EADF2CC9199 /* ProblemListScreenUseCaseTests.swift */; };
+		D115F56B31FA638532B0D92B /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A0CEE648E0B562D28913D /* AppState.swift */; };
+		D37DADF0F4C8E6DDB1655412 /* SchoolGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AE853F48045AC515F8DB4E /* SchoolGrade.swift */; };
+		D57CB3EA025FDBA2DF938DAC /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C364A320BDE223FB67626E /* Word.swift */; };
+		D58E4FFD705B5A0ADF833EB9 /* StudyAnswerPersistentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026F98D7947BA61C7AD7A26 /* StudyAnswerPersistentModel.swift */; };
+		D8C387734E390F3D846054FA /* StudySessionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A4DCEE399152297B1C18DA /* StudySessionSummary.swift */; };
+		E0AC1352ADF0343C6F8F39E6 /* StudyResultScreenUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ACCFCD238B3DA9EC95EAE0 /* StudyResultScreenUseCase.swift */; };
+		EC8DA07C5B4B47902A1FCBBF /* StudyResultScreenViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A61F4E88DD60392ABECE4F6 /* StudyResultScreenViewState.swift */; };
+		ED8F88E2E876C842643F4F57 /* ReviewPriorityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D26AFDD93955BC430EBE4C /* ReviewPriorityService.swift */; };
+		EE28D1B7E220F52FC0BF94A3 /* StudyAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AB37869CA9070A3E4D6874 /* StudyAnswer.swift */; };
+		F3270CD6FDC886AE9D1E685E /* StudyResultScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE73DE9A3A79336E396F85B /* StudyResultScreenView.swift */; };
+		F739813FF4E76530D6B22CD2 /* ImageAnkiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0C4C3285548E23A267AAC3 /* ImageAnkiApp.swift */; };
+		F83BC3412CC7346B46A9680A /* StudySessionBiMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346171B717E0C4D4C78764FC /* StudySessionBiMapper.swift */; };
+		F8C20F1960CAE10FD39A83D7 /* StudyResultScreenUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C565548DA749FBDE59D243C /* StudyResultScreenUseCaseTests.swift */; };
+		FDA13EE68C902FDDA040CAA7 /* StudyCardScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D55B058418E3A605B283C1 /* StudyCardScreenView.swift */; };
+		FE3C0D5FC7DFACFDED525EC5 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6510C6A97394E86272031E92 /* AppDependencies.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A2E48D20A101AA672045ADD3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00CE3DB616A3E766C132755B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E5FD71089D1BB0E0E5D7781;
+			remoteInfo = App;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00D55B058418E3A605B283C1 /* StudyCardScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCardScreenView.swift; sourceTree = "<group>"; };
+		00ECB1B4B332B63AE4D94EB6 /* AsyncStream+TestSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AsyncStream+TestSupport.swift"; sourceTree = "<group>"; };
+		05B1CBB88488FA7402718029 /* ReviewPriorityService.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ReviewPriorityService.md; sourceTree = "<group>"; };
+		07AE853F48045AC515F8DB4E /* SchoolGrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolGrade.swift; sourceTree = "<group>"; };
+		0803406C705685922EFC00C1 /* StudyCardScreenViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCardScreenViewState.swift; sourceTree = "<group>"; };
+		0C565548DA749FBDE59D243C /* StudyResultScreenUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyResultScreenUseCaseTests.swift; sourceTree = "<group>"; };
+		121F37B9AAC08EA0F09535ED /* DomainObject+TestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DomainObject+TestFactory.swift"; sourceTree = "<group>"; };
+		17C3CDEA9FBBD8383FC53D58 /* StudyAnswer.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = StudyAnswer.md; sourceTree = "<group>"; };
+		1A61F4E88DD60392ABECE4F6 /* StudyResultScreenViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyResultScreenViewState.swift; sourceTree = "<group>"; };
+		25009FCD91F2EADBC3E5C3EE /* viewScript.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = viewScript.md; sourceTree = "<group>"; };
+		30374A366782EAF8F5A121EA /* WordChallengeStartScreenViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordChallengeStartScreenViewState.swift; sourceTree = "<group>"; };
+		32933851923A5003B487AE22 /* EffectStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectStream.swift; sourceTree = "<group>"; };
+		346171B717E0C4D4C78764FC /* StudySessionBiMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySessionBiMapper.swift; sourceTree = "<group>"; };
+		3DE79FC9561C31CF9559ED43 /* RepositoryBaseFunctionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryBaseFunctionProtocol.swift; sourceTree = "<group>"; };
+		3E8413218131A1A4B883C149 /* ProblemListScreenViewEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemListScreenViewEffect.swift; sourceTree = "<group>"; };
+		41C2CC9139EDFE0BFF25F064 /* SwiftDataRepository_StudySession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataRepository_StudySession.swift; sourceTree = "<group>"; };
+		482DF6ACDA13C0C1AD328657 /* penScript.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = penScript.md; sourceTree = "<group>"; };
+		4B704B295B63D27888E8FE89 /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CF0CC26BD9F4B0FB6EB7062 /* viewScript.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = viewScript.md; sourceTree = "<group>"; };
+		4DE73DE9A3A79336E396F85B /* StudyResultScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyResultScreenView.swift; sourceTree = "<group>"; };
+		511DEF8FB49410EF0B048413 /* WordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRepository.swift; sourceTree = "<group>"; };
+		5229CB5598433C9529FC9C0D /* DomainModel.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DomainModel.md; sourceTree = "<group>"; };
+		54AB37869CA9070A3E4D6874 /* StudyAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyAnswer.swift; sourceTree = "<group>"; };
+		54EA041480165BA6B1781947 /* StudySession.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = StudySession.md; sourceTree = "<group>"; };
+		57C0F1FF44FB372DFE9FAE36 /* StudyCardScreenUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCardScreenUseCase.swift; sourceTree = "<group>"; };
+		5FE53B6639A05FC7D5401C1F /* ProblemListScreen.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ProblemListScreen.md; sourceTree = "<group>"; };
+		6243C6C0A8B836CFE3CF5B9F /* StudyCardScreenUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCardScreenUseCaseTests.swift; sourceTree = "<group>"; };
+		62CE62D7C818195180CA0328 /* penScript.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = penScript.md; sourceTree = "<group>"; };
+		6510C6A97394E86272031E92 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
+		659E8D1B21D5BEEC4A8C41C0 /* penScript.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = penScript.md; sourceTree = "<group>"; };
+		66623EFA4FA96F202905D5EC /* AnswerJudgment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerJudgment.swift; sourceTree = "<group>"; };
+		6A1024F1A34E9C67B01B02C1 /* WordBiMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordBiMapper.swift; sourceTree = "<group>"; };
+		6A3AD3B30F22E02366CF5768 /* BiMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiMapper.swift; sourceTree = "<group>"; };
+		6D683E1582EE4E3D5D6E5DD3 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		6D815F0D1B808BC5044B7CA7 /* WordPersistentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPersistentModel.swift; sourceTree = "<group>"; };
+		6EAA5B726EB289ACA6310225 /* StudyResultScreen.pen */ = {isa = PBXFileReference; lastKnownFileType = text; path = StudyResultScreen.pen; sourceTree = "<group>"; };
+		6F6F10639CB682F8F9DE88F3 /* RepositoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryError.swift; sourceTree = "<group>"; };
+		7C0C4C3285548E23A267AAC3 /* ImageAnkiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAnkiApp.swift; sourceTree = "<group>"; };
+		7EB0F2AF12610C25027A2DE3 /* StudyCardScreenViewEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCardScreenViewEffect.swift; sourceTree = "<group>"; };
+		876037D31E94A8C066676EEA /* StudyMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyMode.swift; sourceTree = "<group>"; };
+		89ACCFCD238B3DA9EC95EAE0 /* StudyResultScreenUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyResultScreenUseCase.swift; sourceTree = "<group>"; };
+		89E72EE5E344A3713A02325C /* StudyMode.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = StudyMode.md; sourceTree = "<group>"; };
+		8B2A0CEE648E0B562D28913D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		8B47F9363CBE7D34F7AD0812 /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
+		8BEC8C34CF5CCBA67BBAEA6D /* StudySessionPersistentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySessionPersistentModel.swift; sourceTree = "<group>"; };
+		8E867440556941ADDE35FE3A /* WordChallengeStartScreen.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = WordChallengeStartScreen.md; sourceTree = "<group>"; };
+		9026F98D7947BA61C7AD7A26 /* StudyAnswerPersistentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyAnswerPersistentModel.swift; sourceTree = "<group>"; };
+		96125F38EAFF8B6D8B570736 /* WordRepository.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = WordRepository.md; sourceTree = "<group>"; };
+		986063E5E8D53AECD90D6B72 /* Word.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Word.md; sourceTree = "<group>"; };
+		9A3030904B98CC10DEC6611A /* WordChallengeStartScreenUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordChallengeStartScreenUseCaseTests.swift; sourceTree = "<group>"; };
+		9D1C31F777FBCE42A9737B19 /* AnswerJudgment.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AnswerJudgment.md; sourceTree = "<group>"; };
+		9EB28C9BE889395F68955750 /* AppTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A06209D9CA06B264AF1477EA /* ProblemListScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemListScreenView.swift; sourceTree = "<group>"; };
+		A28D83CEDFDE61D9BE5E4284 /* SchoolGrade.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SchoolGrade.md; sourceTree = "<group>"; };
+		A3E939A551C07EADF2CC9199 /* ProblemListScreenUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemListScreenUseCaseTests.swift; sourceTree = "<group>"; };
+		A5BD43195C731945623EFB70 /* StudySession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySession.swift; sourceTree = "<group>"; };
+		A85AC7EF12F3CC2D136E40CF /* StudySessionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySessionRepository.swift; sourceTree = "<group>"; };
+		A8B105624EEA46500C98FD8A /* viewScript.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = viewScript.md; sourceTree = "<group>"; };
+		B1D26AFDD93955BC430EBE4C /* ReviewPriorityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPriorityService.swift; sourceTree = "<group>"; };
+		B412631D3745F07220FF4832 /* WordChallengeStartScreenViewEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordChallengeStartScreenViewEffect.swift; sourceTree = "<group>"; };
+		B7C569018ACB69BCDBF52807 /* Repository_Failing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository_Failing.swift; sourceTree = "<group>"; };
+		B9ED21796AF95E26430568AC /* ProblemListScreen.pen */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProblemListScreen.pen; sourceTree = "<group>"; };
+		BA4B6A8332E8375EBF69D0BD /* WordChallengeStartScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordChallengeStartScreenView.swift; sourceTree = "<group>"; };
+		BACEEAD0A669A1FB5D291F1D /* WordChallengeStartScreen.pen */ = {isa = PBXFileReference; lastKnownFileType = text; path = WordChallengeStartScreen.pen; sourceTree = "<group>"; };
+		C229110519EE65CE12ED8D3C /* SwiftDataRepository_Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataRepository_Word.swift; sourceTree = "<group>"; };
+		C576548F6257C06D26E0D82A /* StudyResultScreen.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = StudyResultScreen.md; sourceTree = "<group>"; };
+		C9C364A320BDE223FB67626E /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		CC2DA930257C0DA9BB2D6A69 /* StudySessionRepository.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = StudySessionRepository.md; sourceTree = "<group>"; };
+		D31A572148861E6EB2DBCBBC /* ProblemListScreenViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemListScreenViewState.swift; sourceTree = "<group>"; };
+		D4333FB8383EE7492E3B6F6D /* WordChallengeStartScreenUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordChallengeStartScreenUseCase.swift; sourceTree = "<group>"; };
+		D7A4DCEE399152297B1C18DA /* StudySessionSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySessionSummary.swift; sourceTree = "<group>"; };
+		E229419908C9FED21C86A7D7 /* StudySessionSummary.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = StudySessionSummary.md; sourceTree = "<group>"; };
+		E46F1A8EA9322D79E3E7B1CE /* penScript.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = penScript.md; sourceTree = "<group>"; };
+		E93C80A9354D8894C70E34AA /* viewScript.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = viewScript.md; sourceTree = "<group>"; };
+		EDC1425F1E78DAE640D813EE /* StudyCardScreen.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = StudyCardScreen.md; sourceTree = "<group>"; };
+		F0F3A8E53209CCB3CBDC575E /* SwiftDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataRepository.swift; sourceTree = "<group>"; };
+		F90D5C1517794AA002827C0E /* ProblemListScreenUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemListScreenUseCase.swift; sourceTree = "<group>"; };
+		FDCDD4FF46ECA451D07A0BAD /* StudyCardScreen.pen */ = {isa = PBXFileReference; lastKnownFileType = text; path = StudyCardScreen.pen; sourceTree = "<group>"; };
+		FF9DE9395471D149978AD3CF /* StudyResultScreenViewEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyResultScreenViewEffect.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0CA367CA899A2D2D28B68844 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				6510C6A97394E86272031E92 /* AppDependencies.swift */,
+				7C0C4C3285548E23A267AAC3 /* ImageAnkiApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		1133919DF9E06AC512F22C05 /* cards */ = {
+			isa = PBXGroup;
+			children = (
+				9D1C31F777FBCE42A9737B19 /* AnswerJudgment.md */,
+				05B1CBB88488FA7402718029 /* ReviewPriorityService.md */,
+				A28D83CEDFDE61D9BE5E4284 /* SchoolGrade.md */,
+				17C3CDEA9FBBD8383FC53D58 /* StudyAnswer.md */,
+				89E72EE5E344A3713A02325C /* StudyMode.md */,
+				54EA041480165BA6B1781947 /* StudySession.md */,
+				CC2DA930257C0DA9BB2D6A69 /* StudySessionRepository.md */,
+				E229419908C9FED21C86A7D7 /* StudySessionSummary.md */,
+				986063E5E8D53AECD90D6B72 /* Word.md */,
+				96125F38EAFF8B6D8B570736 /* WordRepository.md */,
+			);
+			path = cards;
+			sourceTree = "<group>";
+		};
+		15976D44C1A5074463B88E14 /* ProblemListScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E46F1A8EA9322D79E3E7B1CE /* penScript.md */,
+				5FE53B6639A05FC7D5401C1F /* ProblemListScreen.md */,
+				B9ED21796AF95E26430568AC /* ProblemListScreen.pen */,
+				E93C80A9354D8894C70E34AA /* viewScript.md */,
+			);
+			path = ProblemListScreen;
+			sourceTree = "<group>";
+		};
+		17D09D5F7E26590B4A1EDD8D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A06209D9CA06B264AF1477EA /* ProblemListScreenView.swift */,
+				00D55B058418E3A605B283C1 /* StudyCardScreenView.swift */,
+				4DE73DE9A3A79336E396F85B /* StudyResultScreenView.swift */,
+				BA4B6A8332E8375EBF69D0BD /* WordChallengeStartScreenView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		289C823DE967343698134E7A /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				6F6F10639CB682F8F9DE88F3 /* RepositoryError.swift */,
+				A85AC7EF12F3CC2D136E40CF /* StudySessionRepository.swift */,
+				511DEF8FB49410EF0B048413 /* WordRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		32809893706B4D47E771CE18 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9026F98D7947BA61C7AD7A26 /* StudyAnswerPersistentModel.swift */,
+				8BEC8C34CF5CCBA67BBAEA6D /* StudySessionPersistentModel.swift */,
+				6D815F0D1B808BC5044B7CA7 /* WordPersistentModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		33367530180BE61880A3E16D /* ViewStates */ = {
+			isa = PBXGroup;
+			children = (
+				D31A572148861E6EB2DBCBBC /* ProblemListScreenViewState.swift */,
+				0803406C705685922EFC00C1 /* StudyCardScreenViewState.swift */,
+				1A61F4E88DD60392ABECE4F6 /* StudyResultScreenViewState.swift */,
+				30374A366782EAF8F5A121EA /* WordChallengeStartScreenViewState.swift */,
+			);
+			path = ViewStates;
+			sourceTree = "<group>";
+		};
+		38B4FC1ABEA40CA108DD72D8 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				0CA367CA899A2D2D28B68844 /* App */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		45EA13DEBC69047881F2177E /* WordChallengeStartScreen */ = {
+			isa = PBXGroup;
+			children = (
+				482DF6ACDA13C0C1AD328657 /* penScript.md */,
+				4CF0CC26BD9F4B0FB6EB7062 /* viewScript.md */,
+				8E867440556941ADDE35FE3A /* WordChallengeStartScreen.md */,
+				BACEEAD0A669A1FB5D291F1D /* WordChallengeStartScreen.pen */,
+			);
+			path = WordChallengeStartScreen;
+			sourceTree = "<group>";
+		};
+		58EA1B09FE0097DB101A4C35 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				6F47A527906E53F24E878CD1 /* App */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		5CA60E60B27FABCE34043A69 /* usecases */ = {
+			isa = PBXGroup;
+			children = (
+				15976D44C1A5074463B88E14 /* ProblemListScreen */,
+				89E62C55B45D427792C82E10 /* StudyCardScreen */,
+				D79409386D9C5FE1AE7C4AEC /* StudyResultScreen */,
+				45EA13DEBC69047881F2177E /* WordChallengeStartScreen */,
+			);
+			path = usecases;
+			sourceTree = "<group>";
+		};
+		5F08CA268C3508D72BF0794D /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				6A3AD3B30F22E02366CF5768 /* BiMapper.swift */,
+				F0F3A8E53209CCB3CBDC575E /* SwiftDataRepository.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		66DA856C1FAAE0226B089481 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				B7C569018ACB69BCDBF52807 /* Repository_Failing.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		6F3B97AA1D46EF02E716EF90 /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				346171B717E0C4D4C78764FC /* StudySessionBiMapper.swift */,
+				6A1024F1A34E9C67B01B02C1 /* WordBiMapper.swift */,
+			);
+			path = Mappers;
+			sourceTree = "<group>";
+		};
+		6F47A527906E53F24E878CD1 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				38B4FC1ABEA40CA108DD72D8 /* Application */,
+				9D0FD494B0D83B544EA93A87 /* Domain */,
+				F2C36332FBE6C52D439B0D1A /* Infrastructure */,
+				E85A9F8D3BA978DA778FC592 /* Presentation */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		7112F7984314A105A267711C = {
+			isa = PBXGroup;
+			children = (
+				AC61410F1442B6E1D07F6258 /* docs */,
+				58EA1B09FE0097DB101A4C35 /* Sources */,
+				7161C92E181A746CFB0E3E5C /* Tests */,
+				E2A59F20AFBA6347C6F120D9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7161C92E181A746CFB0E3E5C /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				FD532975E9950E7E64B9C412 /* Support */,
+				EF7BA1619BACF5CCC85F9DC4 /* UseCases */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		7329F3F90DD150F0513586D2 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				32933851923A5003B487AE22 /* EffectStream.swift */,
+				3DE79FC9561C31CF9559ED43 /* RepositoryBaseFunctionProtocol.swift */,
+				B1D26AFDD93955BC430EBE4C /* ReviewPriorityService.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		89E62C55B45D427792C82E10 /* StudyCardScreen */ = {
+			isa = PBXGroup;
+			children = (
+				62CE62D7C818195180CA0328 /* penScript.md */,
+				EDC1425F1E78DAE640D813EE /* StudyCardScreen.md */,
+				FDCDD4FF46ECA451D07A0BAD /* StudyCardScreen.pen */,
+				A8B105624EEA46500C98FD8A /* viewScript.md */,
+			);
+			path = StudyCardScreen;
+			sourceTree = "<group>";
+		};
+		933607F4EB856C415E85392E /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				5F08CA268C3508D72BF0794D /* Core */,
+				32809893706B4D47E771CE18 /* Models */,
+				AB881CC4131CDAB49ACD4B09 /* Repositories */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		9AB879F4FBFA3A1CBA9642CD /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				F90D5C1517794AA002827C0E /* ProblemListScreenUseCase.swift */,
+				57C0F1FF44FB372DFE9FAE36 /* StudyCardScreenUseCase.swift */,
+				89ACCFCD238B3DA9EC95EAE0 /* StudyResultScreenUseCase.swift */,
+				D4333FB8383EE7492E3B6F6D /* WordChallengeStartScreenUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		9D0FD494B0D83B544EA93A87 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				7329F3F90DD150F0513586D2 /* Core */,
+				F53F27DBD30802F99279FF26 /* Entities */,
+				289C823DE967343698134E7A /* Repositories */,
+				9AB879F4FBFA3A1CBA9642CD /* UseCases */,
+				B6E69469656061AFF4434D07 /* ValueObjects */,
+				FBEBBF5F083E2FC81AD201D6 /* ViewEffects */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		AB881CC4131CDAB49ACD4B09 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				41C2CC9139EDFE0BFF25F064 /* SwiftDataRepository_StudySession.swift */,
+				C229110519EE65CE12ED8D3C /* SwiftDataRepository_Word.swift */,
+				6F3B97AA1D46EF02E716EF90 /* Mappers */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		AC61410F1442B6E1D07F6258 /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				D325ED07EAFAE0AD48B52833 /* domain */,
+				5CA60E60B27FABCE34043A69 /* usecases */,
+			);
+			path = docs;
+			sourceTree = "<group>";
+		};
+		B6E69469656061AFF4434D07 /* ValueObjects */ = {
+			isa = PBXGroup;
+			children = (
+				66623EFA4FA96F202905D5EC /* AnswerJudgment.swift */,
+				07AE853F48045AC515F8DB4E /* SchoolGrade.swift */,
+				876037D31E94A8C066676EEA /* StudyMode.swift */,
+				D7A4DCEE399152297B1C18DA /* StudySessionSummary.swift */,
+			);
+			path = ValueObjects;
+			sourceTree = "<group>";
+		};
+		D325ED07EAFAE0AD48B52833 /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				5229CB5598433C9529FC9C0D /* DomainModel.md */,
+				1133919DF9E06AC512F22C05 /* cards */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
+		D56518EBB721757C626FDA6C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				8B47F9363CBE7D34F7AD0812 /* ViewProtocol.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		D79409386D9C5FE1AE7C4AEC /* StudyResultScreen */ = {
+			isa = PBXGroup;
+			children = (
+				659E8D1B21D5BEEC4A8C41C0 /* penScript.md */,
+				C576548F6257C06D26E0D82A /* StudyResultScreen.md */,
+				6EAA5B726EB289ACA6310225 /* StudyResultScreen.pen */,
+				25009FCD91F2EADBC3E5C3EE /* viewScript.md */,
+			);
+			path = StudyResultScreen;
+			sourceTree = "<group>";
+		};
+		E2A59F20AFBA6347C6F120D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4B704B295B63D27888E8FE89 /* App.app */,
+				9EB28C9BE889395F68955750 /* AppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E85A9F8D3BA978DA778FC592 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				8B2A0CEE648E0B562D28913D /* AppState.swift */,
+				6D683E1582EE4E3D5D6E5DD3 /* RootView.swift */,
+				D56518EBB721757C626FDA6C /* Core */,
+				17D09D5F7E26590B4A1EDD8D /* Views */,
+				33367530180BE61880A3E16D /* ViewStates */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		EF7BA1619BACF5CCC85F9DC4 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				A3E939A551C07EADF2CC9199 /* ProblemListScreenUseCaseTests.swift */,
+				6243C6C0A8B836CFE3CF5B9F /* StudyCardScreenUseCaseTests.swift */,
+				0C565548DA749FBDE59D243C /* StudyResultScreenUseCaseTests.swift */,
+				9A3030904B98CC10DEC6611A /* WordChallengeStartScreenUseCaseTests.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		F2C36332FBE6C52D439B0D1A /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				933607F4EB856C415E85392E /* Persistence */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		F53F27DBD30802F99279FF26 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				54AB37869CA9070A3E4D6874 /* StudyAnswer.swift */,
+				A5BD43195C731945623EFB70 /* StudySession.swift */,
+				C9C364A320BDE223FB67626E /* Word.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		FBEBBF5F083E2FC81AD201D6 /* ViewEffects */ = {
+			isa = PBXGroup;
+			children = (
+				3E8413218131A1A4B883C149 /* ProblemListScreenViewEffect.swift */,
+				7EB0F2AF12610C25027A2DE3 /* StudyCardScreenViewEffect.swift */,
+				FF9DE9395471D149978AD3CF /* StudyResultScreenViewEffect.swift */,
+				B412631D3745F07220FF4832 /* WordChallengeStartScreenViewEffect.swift */,
+			);
+			path = ViewEffects;
+			sourceTree = "<group>";
+		};
+		FD532975E9950E7E64B9C412 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				00ECB1B4B332B63AE4D94EB6 /* AsyncStream+TestSupport.swift */,
+				121F37B9AAC08EA0F09535ED /* DomainObject+TestFactory.swift */,
+				66DA856C1FAAE0226B089481 /* Repositories */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0E5FD71089D1BB0E0E5D7781 /* App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0383415E2D8EEB1D6733E866 /* Build configuration list for PBXNativeTarget "App" */;
+			buildPhases = (
+				BEBB1D245D0C4AD5C1D6483E /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = App;
+			packageProductDependencies = (
+			);
+			productName = App;
+			productReference = 4B704B295B63D27888E8FE89 /* App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F8A3CA0E0448BA468B96E24E /* AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E27FC86041D5041930C97EF3 /* Build configuration list for PBXNativeTarget "AppTests" */;
+			buildPhases = (
+				C083474FCC9A4EF0F1EA1AE3 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				58A968ED6CCE33660BD7453B /* PBXTargetDependency */,
+			);
+			name = AppTests;
+			packageProductDependencies = (
+			);
+			productName = AppTests;
+			productReference = 9EB28C9BE889395F68955750 /* AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		00CE3DB616A3E766C132755B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+			};
+			buildConfigurationList = D8BDE27233270618E33B07CA /* Build configuration list for PBXProject "ImageAnki" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 7112F7984314A105A267711C;
+			minimizedProjectReferenceProxies = 1;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0E5FD71089D1BB0E0E5D7781 /* App */,
+				F8A3CA0E0448BA468B96E24E /* AppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BEBB1D245D0C4AD5C1D6483E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AB080DE78C5C1D8D51129B4 /* AnswerJudgment.swift in Sources */,
+				FE3C0D5FC7DFACFDED525EC5 /* AppDependencies.swift in Sources */,
+				D115F56B31FA638532B0D92B /* AppState.swift in Sources */,
+				9FCB4E1FBEE929BE0A64073C /* BiMapper.swift in Sources */,
+				6E3B8102A993C33543AB0AB2 /* EffectStream.swift in Sources */,
+				F739813FF4E76530D6B22CD2 /* ImageAnkiApp.swift in Sources */,
+				748C205A7DF933D8CCD0ECE7 /* ProblemListScreenUseCase.swift in Sources */,
+				49532569C879A98009338251 /* ProblemListScreenView.swift in Sources */,
+				084644F8450E2439DF97E465 /* ProblemListScreenViewEffect.swift in Sources */,
+				B098A0A10AF64B196AFD9D57 /* ProblemListScreenViewState.swift in Sources */,
+				B70140384D2FE8EB483B9DDF /* RepositoryBaseFunctionProtocol.swift in Sources */,
+				057A6C1AFC1D88609049A62F /* RepositoryError.swift in Sources */,
+				ED8F88E2E876C842643F4F57 /* ReviewPriorityService.swift in Sources */,
+				4426E380D6EA4FA8A29D374A /* RootView.swift in Sources */,
+				D37DADF0F4C8E6DDB1655412 /* SchoolGrade.swift in Sources */,
+				EE28D1B7E220F52FC0BF94A3 /* StudyAnswer.swift in Sources */,
+				D58E4FFD705B5A0ADF833EB9 /* StudyAnswerPersistentModel.swift in Sources */,
+				8C717D77E5459ED8C43C49BD /* StudyCardScreenUseCase.swift in Sources */,
+				FDA13EE68C902FDDA040CAA7 /* StudyCardScreenView.swift in Sources */,
+				C0DE6D5A3F98D5D51FC34295 /* StudyCardScreenViewEffect.swift in Sources */,
+				895CBEE6617681A9D5F388A9 /* StudyCardScreenViewState.swift in Sources */,
+				474A091671E941190BDDCE7B /* StudyMode.swift in Sources */,
+				E0AC1352ADF0343C6F8F39E6 /* StudyResultScreenUseCase.swift in Sources */,
+				F3270CD6FDC886AE9D1E685E /* StudyResultScreenView.swift in Sources */,
+				BAE134E340446EFA90374D2B /* StudyResultScreenViewEffect.swift in Sources */,
+				EC8DA07C5B4B47902A1FCBBF /* StudyResultScreenViewState.swift in Sources */,
+				94C43DC6276DA332291B1FDF /* StudySession.swift in Sources */,
+				F83BC3412CC7346B46A9680A /* StudySessionBiMapper.swift in Sources */,
+				68C743FCEC73105340DF762C /* StudySessionPersistentModel.swift in Sources */,
+				85DDA29430E31B699BDE382E /* StudySessionRepository.swift in Sources */,
+				D8C387734E390F3D846054FA /* StudySessionSummary.swift in Sources */,
+				77A884CC6CEBB1D5B7888A06 /* SwiftDataRepository.swift in Sources */,
+				02980E45339B70189B7634D3 /* SwiftDataRepository_StudySession.swift in Sources */,
+				9E636B546DDDEDED7FE4C58A /* SwiftDataRepository_Word.swift in Sources */,
+				934CBA29B6230B5C8DC0D5E8 /* ViewProtocol.swift in Sources */,
+				D57CB3EA025FDBA2DF938DAC /* Word.swift in Sources */,
+				2FAAB1AB33792B4AE97E8B67 /* WordBiMapper.swift in Sources */,
+				7236C06F687BB25FD3D051C2 /* WordChallengeStartScreenUseCase.swift in Sources */,
+				6A0B596DC33FF012D5EC81B5 /* WordChallengeStartScreenView.swift in Sources */,
+				065583D7AE6DCAE1967A51CB /* WordChallengeStartScreenViewEffect.swift in Sources */,
+				403CFA7799958669AD0B3C43 /* WordChallengeStartScreenViewState.swift in Sources */,
+				4CDE03D79AE2F5378F4A43CB /* WordPersistentModel.swift in Sources */,
+				44C4659DB7015CE25D719FC5 /* WordRepository.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C083474FCC9A4EF0F1EA1AE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				083DC3FF6FFABA385858B8A8 /* AsyncStream+TestSupport.swift in Sources */,
+				82378826C66B63488CA4F61E /* DomainObject+TestFactory.swift in Sources */,
+				D0F9A8BC332F557991187CAB /* ProblemListScreenUseCaseTests.swift in Sources */,
+				4914C509A51C258F6C5A8CF9 /* Repository_Failing.swift in Sources */,
+				89C6EB487AEC771FB21995A9 /* StudyCardScreenUseCaseTests.swift in Sources */,
+				F8C20F1960CAE10FD39A83D7 /* StudyResultScreenUseCaseTests.swift in Sources */,
+				A6733907DC4FECB0ED80245B /* WordChallengeStartScreenUseCaseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		58A968ED6CCE33660BD7453B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0E5FD71089D1BB0E0E5D7781 /* App */;
+			targetProxy = A2E48D20A101AA672045ADD3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		14042FF83109F6BD01D19F9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_LAUNCH_SCREEN_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.inabadai.ImageAnki;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		24F57CA4532FBD4A0D76264B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		3F04DB0F578F6A6D7287D25A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.inabadai.ImageAnkiTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/App.app/App";
+			};
+			name = Debug;
+		};
+		4942EC6CD357F08C582D09A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_LAUNCH_SCREEN_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.inabadai.ImageAnki;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		83831F28B2D3002AFEE27F3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.inabadai.ImageAnkiTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/App.app/App";
+			};
+			name = Release;
+		};
+		AEFB27ACA3A40425FA97084B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0383415E2D8EEB1D6733E866 /* Build configuration list for PBXNativeTarget "App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14042FF83109F6BD01D19F9A /* Debug */,
+				4942EC6CD357F08C582D09A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D8BDE27233270618E33B07CA /* Build configuration list for PBXProject "ImageAnki" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEFB27ACA3A40425FA97084B /* Debug */,
+				24F57CA4532FBD4A0D76264B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E27FC86041D5041930C97EF3 /* Build configuration list for PBXNativeTarget "AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F04DB0F578F6A6D7287D25A /* Debug */,
+				83831F28B2D3002AFEE27F3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 00CE3DB616A3E766C132755B /* Project object */;
+}

@@ -1,0 +1,39 @@
+{
+  "version": "2.8",
+  "children": [
+    {
+      "id": "problemListRoot",
+      "type": "frame",
+      "name": "ProblemListScreen",
+      "x": 0,
+      "y": 0,
+      "width": 393,
+      "height": 852,
+      "fill": "#F5F7FB",
+      "layout": "vertical",
+      "padding": [24, 20],
+      "gap": 14,
+      "children": [
+        { "id": "title", "type": "text", "content": "学習履歴", "textGrowth": "fixed-width", "width": "fill_container", "fontSize": 28, "fontWeight": "700", "fill": "#14213D" },
+        { "id": "subtitle", "type": "text", "content": "これまでの成績を確認できます。", "textGrowth": "fixed-width", "width": "fill_container", "fontSize": 14, "fill": "#475569" },
+        { "id": "loading", "type": "frame", "layout": "vertical", "width": "fill_container", "height": 34, "justifyContent": "center", "alignItems": "center", "cornerRadius": 10, "fill": "#EFF6FF", "children": [{ "id": "loadingText", "type": "text", "content": "履歴を読み込み中...", "fontSize": 12, "fill": "#1D4ED8" }] },
+        {
+          "id": "listCard",
+          "type": "frame",
+          "layout": "vertical",
+          "width": "fill_container",
+          "gap": 8,
+          "padding": 12,
+          "cornerRadius": 16,
+          "fill": "#FFFFFF",
+          "children": [
+            { "id": "cell1", "type": "frame", "layout": "vertical", "width": "fill_container", "gap": 4, "padding": 12, "cornerRadius": 12, "fill": "#F8FAFC", "stroke": { "thickness": 1, "fill": "#E2E8F0" }, "children": [{ "id": "cell1Title", "type": "text", "content": "第12回: 英単語20問", "textGrowth": "fixed-width", "width": "fill_container", "fontSize": 15, "fontWeight": "700", "fill": "#1E293B" }, { "id": "cell1Meta", "type": "text", "content": "正解 16 / 不正解 4 ・ 2026/02/14", "textGrowth": "fixed-width", "width": "fill_container", "fontSize": 13, "fill": "#64748B" }] },
+            { "id": "cell2", "type": "frame", "layout": "vertical", "width": "fill_container", "gap": 4, "padding": 12, "cornerRadius": 12, "fill": "#F8FAFC", "stroke": { "thickness": 1, "fill": "#E2E8F0" }, "children": [{ "id": "cell2Title", "type": "text", "content": "第11回: 復習10問", "textGrowth": "fixed-width", "width": "fill_container", "fontSize": 15, "fontWeight": "700", "fill": "#1E293B" }, { "id": "cell2Meta", "type": "text", "content": "正解 8 / 不正解 2 ・ 2026/02/13", "textGrowth": "fixed-width", "width": "fill_container", "fontSize": 13, "fill": "#64748B" }] }
+          ]
+        },
+        { "id": "emptyState", "type": "frame", "layout": "vertical", "width": "fill_container", "gap": 6, "padding": 18, "justifyContent": "center", "alignItems": "center", "cornerRadius": 14, "fill": "#EEF2FF", "children": [{ "id": "emptyTitle", "type": "text", "content": "まだ履歴がありません", "fontSize": 15, "fontWeight": "700", "fill": "#3730A3" }, { "id": "emptyDesc", "type": "text", "content": "学習を開始するとここに記録されます。", "fontSize": 13, "fill": "#4F46E5" }] },
+        { "id": "errorAlert", "type": "frame", "layout": "horizontal", "width": "fill_container", "gap": 8, "padding": 12, "cornerRadius": 12, "fill": "#FEF2F2", "children": [{ "id": "errorIcon", "type": "text", "content": "!", "fontSize": 14, "fontWeight": "700", "fill": "#B91C1C" }, { "id": "errorText", "type": "text", "content": "履歴の読み込みに失敗しました。時間をおいて再試行してください。", "textGrowth": "fixed-width", "width": "fill_container", "fontSize": 13, "fill": "#991B1B" }] }
+      ]
+    }
+  ]
+}

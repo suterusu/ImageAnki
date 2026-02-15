@@ -1,0 +1,376 @@
+{
+  "version": "2.8",
+  "children": [
+    {
+      "type": "frame",
+      "id": "wordChallengeRoot",
+      "x": 0,
+      "y": 0,
+      "name": "WordChallengeStartScreen",
+      "width": 393,
+      "height": 852,
+      "fill": "#F5F7FB",
+      "layout": "vertical",
+      "gap": 18,
+      "padding": [
+        24,
+        20
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "C7NBh",
+          "name": "hero",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 8,
+          "children": [
+            {
+              "type": "text",
+              "id": "aG2nN",
+              "name": "heroTitle",
+              "fill": "#14213D",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "単語挑戦を始める",
+              "fontFamily": "Inter",
+              "fontSize": 28,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "bN4wp",
+              "name": "heroDesc",
+              "fill": "#334155",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "学年と学習数を選んで、今日の学習を開始します。",
+              "lineHeight": 1.4,
+              "fontFamily": "Inter",
+              "fontSize": 15,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "oZJhO",
+          "name": "gradeCard",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "cornerRadius": 16,
+          "layout": "vertical",
+          "gap": 10,
+          "padding": 14,
+          "children": [
+            {
+              "type": "text",
+              "id": "XydRB",
+              "name": "gradeLabel",
+              "fill": "#1E293B",
+              "content": "学年",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "Q3bBv",
+              "name": "gradeOptions",
+              "width": "fill_container",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "jr0O2",
+                  "name": "grade1",
+                  "width": "fill_container",
+                  "height": 42,
+                  "fill": "#1D4ED8",
+                  "cornerRadius": 12,
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "9xwvo",
+                      "name": "grade1Label",
+                      "fill": "#FFFFFF",
+                      "content": "中1",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "C8ftu",
+                  "name": "grade2",
+                  "width": "fill_container",
+                  "height": 42,
+                  "fill": "#E2E8F0",
+                  "cornerRadius": 12,
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "btgZG",
+                      "name": "grade2Label",
+                      "fill": "#334155",
+                      "content": "中2",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "r1joz",
+                  "name": "grade3",
+                  "width": "fill_container",
+                  "height": 42,
+                  "fill": "#E2E8F0",
+                  "cornerRadius": 12,
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "SoMSn",
+                      "name": "grade3Label",
+                      "fill": "#334155",
+                      "content": "中3",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "NnL1m",
+          "name": "countCard",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "cornerRadius": 16,
+          "layout": "vertical",
+          "gap": 10,
+          "padding": 14,
+          "children": [
+            {
+              "type": "text",
+              "id": "HK0m5",
+              "name": "countLabel",
+              "fill": "#1E293B",
+              "content": "学習数",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "DqeGv",
+              "name": "countOptions",
+              "width": "fill_container",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "oHmsv",
+                  "name": "count1",
+                  "width": "fill_container",
+                  "height": 40,
+                  "fill": "#DBEAFE",
+                  "cornerRadius": 12,
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "eJF3y",
+                      "name": "count1Label",
+                      "fill": "#1E3A8A",
+                      "content": "10問",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "9QHPk",
+                  "name": "count2",
+                  "width": "fill_container",
+                  "height": 40,
+                  "fill": "#E2E8F0",
+                  "cornerRadius": 12,
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "TMNPH",
+                      "name": "count2Label",
+                      "fill": "#334155",
+                      "content": "20問",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "MAOaX",
+              "name": "countInput",
+              "width": "fill_container",
+              "height": 44,
+              "fill": "#F8FAFC",
+              "cornerRadius": 12,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#CBD5E1"
+              },
+              "padding": [
+                0,
+                14
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "i8c1i",
+                  "name": "countInputLabel",
+                  "fill": "#475569",
+                  "content": "任意入力",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "f8eSg",
+                  "name": "countInputValue",
+                  "fill": "#0F172A",
+                  "content": "15問",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "tnohG",
+          "name": "errorMsg",
+          "fill": "#B91C1C",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "学習数は1以上で入力してください。",
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "TTQw0",
+          "name": "loadingBar",
+          "width": "fill_container",
+          "height": 36,
+          "fill": "#EFF6FF",
+          "cornerRadius": 10,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "Wabel",
+              "name": "loadingText",
+              "fill": "#1D4ED8",
+              "content": "問題を読み込み中...",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "oyY3g",
+          "name": "actionGroup",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 10,
+          "children": [
+            {
+              "type": "frame",
+              "id": "JOba6",
+              "name": "startButton",
+              "width": "fill_container",
+              "height": 50,
+              "fill": "#EA580C",
+              "cornerRadius": 14,
+              "layout": "vertical",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "kf7lr",
+                  "name": "startLabel",
+                  "fill": "#FFFFFF",
+                  "content": "学習する",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Ltg3j",
+              "name": "reviewButton",
+              "width": "fill_container",
+              "height": 50,
+              "fill": "#1D4ED8",
+              "cornerRadius": 14,
+              "layout": "vertical",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "0rXlK",
+                  "name": "reviewLabel",
+                  "fill": "#FFFFFF",
+                  "content": "復習する",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
