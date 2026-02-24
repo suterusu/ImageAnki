@@ -1,10 +1,9 @@
-// このファイルは自動生成されています
-
+// 自動生成
 import Foundation
 
 @MainActor
 public protocol RepositoryBaseFunctionProtocol {
-    associatedtype Domain: Identifiable & Sendable where Domain.ID: Sendable
+    associatedtype Domain: Identifiable
 
     func fetchAll() async throws -> [Domain]
     func fetch(id: Domain.ID) async throws -> Domain?

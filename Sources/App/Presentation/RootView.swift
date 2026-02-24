@@ -1,5 +1,3 @@
-// このファイルは自動生成されています
-
 import SwiftUI
 
 public struct RootView: View {
@@ -11,19 +9,19 @@ public struct RootView: View {
         NavigationStack(path: $appState.navigationPath) {
             TabView(selection: $appState.selectedTab) {
                 WordChallengeStartScreenView()
-                    .tabItem { Label("単語挑戦", systemImage: "bolt.fill") }
+                    .tabItem { Label("単語挑戦", systemImage: "book") }
                     .tag(AppTab.wordChallengeStart)
 
-                ProblemListScreenView()
-                    .tabItem { Label("成績一覧", systemImage: "list.bullet.rectangle") }
-                    .tag(AppTab.problemList)
+                PerformanceListScreenView()
+                    .tabItem { Label("成績一覧", systemImage: "chart.bar") }
+                    .tag(AppTab.performanceList)
             }
-            .navigationDestination(for: Screen.self) { screen in
-                switch screen {
-                case .studyCard(let sessionID):
-                    StudyCardScreenView(sessionID: sessionID)
-                case .studyResult(let sessionID):
-                    StudyResultScreenView(sessionID: sessionID)
+            .navigationDestination(for: Screen.self) { destination in
+                switch destination {
+                case .studySession(let sessionID):
+                    StudySessionScreenView(sessionID: sessionID)
+                case .performanceDetail(let sessionID):
+                    PerformanceDetailScreenView(sessionID: sessionID)
                 }
             }
         }

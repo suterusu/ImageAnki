@@ -1,41 +1,20 @@
-// このファイルは自動生成されています
-
 import Foundation
-import SwiftData
 
-@MainActor
-public struct SwiftDataRepository_StudySession: StudySessionRepository {
-    private let core: SwiftDataRepository<StudySessionBiMapper>
+public typealias SwiftDataRepository_StudySession = SwiftDataRepository<StudySessionBiMapper>
 
-    public init(context: ModelContext) {
-        self.core = SwiftDataRepository(context: context, mapper: StudySessionBiMapper())
-    }
-
-    public func fetchAll() async throws -> [StudySession] {
-        try await core.fetchAll()
-    }
-
-    public func fetch(id: UUID) async throws -> StudySession? {
-        try await core.fetch(id: id)
-    }
-
-    public func insert(_ domain: StudySession) async throws {
-        try await core.insert(domain)
-    }
-
-    public func update(_ domain: StudySession) async throws {
-        try await core.update(domain)
-    }
-
-    public func delete(id: UUID) async throws {
-        try await core.delete(id: id)
-    }
-
-    public func save(session: StudySession) async throws {
-        if try await fetch(id: session.id) == nil {
-            try await insert(session)
-        } else {
-            try await update(session)
-        }
+extension SwiftDataRepository: StudySessionRepository where Mapper == StudySessionBiMapper {
+    public func fetchPerformanceSummaries() async throws -> [PerformanceSummary] {
+        let sessions = try await fetchAll()
+        return try sessions
+            .sorted { $0.startedAt > $1.startedAt }
+            .map { session in
+                try PerformanceSummary(
+                    sessionID: session.id,
+                    studiedAt: session.startedAt,
+                    gradeLabel: session.gradeFilter?.rawValue ?? "全学年",
+                    correctCount: session.correctCount(),
+                    incorrectCount: session.incorrectCount()
+                )
+            }
     }
 }

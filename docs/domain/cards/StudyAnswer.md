@@ -1,20 +1,20 @@
-# StudyAnswer（学習判定）
+# StudyAnswer（学習回答）
 
 ## 概要
 
-1問の正誤判定を表すエンティティ。
+学習セッション内で1枚のカードに対して入力された判定結果を表すエンティティ。
 
 ## 属性
 
 | 名前 | 型 | 説明 |
 | ---- | -- | ---- |
-| id | UUID | 判定の識別子 |
-| wordID | UUID | 対象単語ID |
+| id | UUID | 識別子 |
+| cardId | UUID | 判定対象カードID |
 | judgment | AnswerJudgment | 正誤判定 |
-| answeredAt | Date | 判定日時 |
+| answeredAt | Date | 判定時刻 |
 
 ## 関連
 
 - [AnswerJudgment](AnswerJudgment.md)
-- [Word](Word.md)
+- [WordCard](WordCard.md)
 - [StudySession](StudySession.md)

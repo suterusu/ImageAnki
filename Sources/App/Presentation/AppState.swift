@@ -1,28 +1,25 @@
-// このファイルは自動生成されています
-
-import Foundation
-import Observation
 import SwiftUI
+import Observation
 
 public enum AppTab: Hashable {
     case wordChallengeStart
-    case problemList
+    case performanceList
 }
 
 public enum Screen: Hashable {
-    case studyCard(sessionID: UUID)
-    case studyResult(sessionID: UUID)
+    case studySession(sessionID: UUID)
+    case performanceDetail(sessionID: UUID)
 }
 
 public protocol AppEffectConvertible: Sendable {
     func asAppEffect() -> AppEffect
 }
 
-public enum AppEffect: Sendable {
-    case wordChallengeStart(WordChallengeStartScreenViewEffect)
-    case studyCard(StudyCardScreenViewEffect)
-    case studyResult(StudyResultScreenViewEffect)
-    case problemList(ProblemListScreenViewEffect)
+public enum AppEffect {
+    case wordChallengeStart(WordChallengeStartScreenEffect)
+    case studySession(StudySessionScreenEffect)
+    case performanceList(PerformanceListScreenEffect)
+    case performanceDetail(PerformanceDetailScreenEffect)
 }
 
 @MainActor
@@ -37,38 +34,37 @@ public final class AppState {
         switch effect {
         case .wordChallengeStart(let effect):
             switch effect {
-            case .navigateToStudyCard(let sessionID):
-                navigationPath.append(Screen.studyCard(sessionID: sessionID))
-            default:
-                break
-            }
-        case .studyCard(let effect):
-            switch effect {
-            case .navigateToStudyResult(let sessionID):
-                navigationPath.append(Screen.studyResult(sessionID: sessionID))
-            default:
-                break
-            }
-        case .studyResult(let effect):
-            switch effect {
-            case .navigateToProblemList:
-                selectedTab = .problemList
-                while !navigationPath.isEmpty {
-                    navigationPath.removeLast()
-                }
-            case .navigateToStudyCard(let sessionID):
-                while !navigationPath.isEmpty {
-                    navigationPath.removeLast()
-                }
+            case .navigateToStudySession(let sessionID):
                 selectedTab = .wordChallengeStart
-                navigationPath.append(Screen.studyCard(sessionID: sessionID))
+                navigationPath.removeLast(navigationPath.count)
+                navigationPath.append(Screen.studySession(sessionID: sessionID))
             default:
                 break
             }
-        case .problemList(let effect):
+        case .studySession(let effect):
             switch effect {
-            case .navigateToStudyResult(let sessionID):
-                navigationPath.append(Screen.studyResult(sessionID: sessionID))
+            case .navigateToPerformanceList:
+                selectedTab = .performanceList
+                navigationPath.removeLast(navigationPath.count)
+            default:
+                break
+            }
+        case .performanceList(let effect):
+            switch effect {
+            case .navigateToPerformanceDetail(let sessionID):
+                selectedTab = .performanceList
+                navigationPath.removeLast(navigationPath.count)
+                navigationPath.append(Screen.performanceDetail(sessionID: sessionID))
+            default:
+                break
+            }
+        case .performanceDetail(let effect):
+            switch effect {
+            case .navigateToPerformanceList:
+                selectedTab = .performanceList
+                if !navigationPath.isEmpty {
+                    navigationPath.removeLast()
+                }
             default:
                 break
             }

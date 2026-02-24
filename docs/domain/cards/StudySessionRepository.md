@@ -2,16 +2,16 @@
 
 ## 概要
 
-学習回の保存と取得を担当するリポジトリ。
+学習回の永続化と成績取得を担当するリポジトリ。
 
 ## 操作
 
 - fetch(id: UUID): StudySession?
 - fetchAll(): [StudySession]
 - save(session: StudySession): Void
-- delete(id: UUID): Void
+- fetchPerformanceSummaries(): [PerformanceSummary]
 
 ## 関連
 
 - [StudySession](StudySession.md)
-- [StudyAnswer](StudyAnswer.md)
+- [PerformanceSummary](PerformanceSummary.md)

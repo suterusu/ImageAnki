@@ -1,35 +1,34 @@
-// このファイルは自動生成されています
-
 import Foundation
 import SwiftData
 
 @Model
 public final class StudySessionPersistentModel: Identifiable {
     public var id: UUID
-    public var modeRawValue: String
-    public var gradeRawValue: String?
-    public var requestedCount: Int
     public var startedAt: Date
-    public var finishedAt: Date?
-
-    @Relationship(deleteRule: .cascade)
-    public var answers: [StudyAnswerPersistentModel]
+    public var modeRawValue: String
+    public var gradeFilterRawValue: String?
+    public var targetCount: Int
+    public var statusRawValue: String
+    public var answersJSON: Data
+    public var cardIDsJSON: Data
 
     public init(
         id: UUID,
-        modeRawValue: String,
-        gradeRawValue: String?,
-        requestedCount: Int,
         startedAt: Date,
-        finishedAt: Date?,
-        answers: [StudyAnswerPersistentModel]
+        modeRawValue: String,
+        gradeFilterRawValue: String?,
+        targetCount: Int,
+        statusRawValue: String,
+        answersJSON: Data,
+        cardIDsJSON: Data
     ) {
         self.id = id
-        self.modeRawValue = modeRawValue
-        self.gradeRawValue = gradeRawValue
-        self.requestedCount = requestedCount
         self.startedAt = startedAt
-        self.finishedAt = finishedAt
-        self.answers = answers
+        self.modeRawValue = modeRawValue
+        self.gradeFilterRawValue = gradeFilterRawValue
+        self.targetCount = targetCount
+        self.statusRawValue = statusRawValue
+        self.answersJSON = answersJSON
+        self.cardIDsJSON = cardIDsJSON
     }
 }

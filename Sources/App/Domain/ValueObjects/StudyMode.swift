@@ -1,6 +1,7 @@
-// このファイルは自動生成されています
+// 自動生成
+import Foundation
 
 public enum StudyMode: String, CaseIterable, Sendable {
-    case normal
-    case review
+    case learning = "学習"
+    case review = "復習"
 }

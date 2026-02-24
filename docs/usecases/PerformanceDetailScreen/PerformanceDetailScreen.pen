@@ -1,0 +1,193 @@
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "content": "戻る",
+              "fill": "#2563EB",
+              "fontSize": 14,
+              "fontWeight": "600",
+              "id": "PDS_back",
+              "textColor": "#2563EB",
+              "type": "text"
+            },
+            {
+              "content": "成績詳細",
+              "fill": "#0F172A",
+              "fontSize": 20,
+              "fontWeight": "700",
+              "id": "PDS_title",
+              "textColor": "#0F172A",
+              "type": "text"
+            }
+          ],
+          "cornerRadius": 12,
+          "fill": "#FFFFFF",
+          "gap": 10,
+          "height": 52,
+          "id": "PDS_nav",
+          "layout": "horizontal",
+          "name": "ナビバー",
+          "padding": 12,
+          "type": "frame",
+          "width": "fill_container"
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "content": "正解 16",
+                  "fill": "#166534",
+                  "fontSize": 16,
+                  "fontWeight": "700",
+                  "id": "PDS_ok_text",
+                  "textColor": "#166534",
+                  "type": "text"
+                }
+              ],
+              "cornerRadius": 12,
+              "fill": "#DCFCE7",
+              "id": "PDS_ok",
+              "padding": 12,
+              "type": "frame"
+            },
+            {
+              "children": [
+                {
+                  "content": "不正解 4",
+                  "fill": "#B91C1C",
+                  "fontSize": 16,
+                  "fontWeight": "700",
+                  "id": "PDS_ng_text",
+                  "textColor": "#B91C1C",
+                  "type": "text"
+                }
+              ],
+              "cornerRadius": 12,
+              "fill": "#FEE2E2",
+              "id": "PDS_ng",
+              "padding": 12,
+              "type": "frame"
+            }
+          ],
+          "cornerRadius": 16,
+          "fill": "#FFFFFF",
+          "gap": 12,
+          "id": "PDS_summary",
+          "layout": "horizontal",
+          "name": "サマリー",
+          "padding": 14,
+          "type": "frame",
+          "width": "fill_container"
+        },
+        {
+          "children": [
+            {
+              "content": "正解した単語",
+              "fill": "#0F172A",
+              "fontSize": 15,
+              "fontWeight": "700",
+              "id": "PDS_correct_title",
+              "textColor": "#0F172A",
+              "type": "text"
+            },
+            {
+              "content": "- 図書館",
+              "fill": "#0F172A",
+              "fontSize": 14,
+              "id": "PDS_correct_item1",
+              "textColor": "#0F172A",
+              "type": "text"
+            },
+            {
+              "content": "- 到着する",
+              "fill": "#0F172A",
+              "fontSize": 14,
+              "id": "PDS_correct_item2",
+              "textColor": "#0F172A",
+              "type": "text"
+            },
+            {
+              "content": "- 練習",
+              "fill": "#0F172A",
+              "fontSize": 14,
+              "id": "PDS_correct_item3",
+              "textColor": "#0F172A",
+              "type": "text"
+            }
+          ],
+          "cornerRadius": 14,
+          "fill": "#FFFFFF",
+          "gap": 8,
+          "id": "PDS_correct_list",
+          "layout": "vertical",
+          "name": "正解一覧",
+          "padding": 14,
+          "type": "frame",
+          "width": "fill_container"
+        },
+        {
+          "children": [
+            {
+              "content": "不正解だった単語",
+              "fill": "#0F172A",
+              "fontSize": 15,
+              "fontWeight": "700",
+              "id": "PDS_incorrect_title",
+              "textColor": "#0F172A",
+              "type": "text"
+            },
+            {
+              "content": "- 十分に",
+              "fill": "#0F172A",
+              "fontSize": 14,
+              "id": "PDS_incorrect_item1",
+              "textColor": "#0F172A",
+              "type": "text"
+            },
+            {
+              "content": "- 〜を通って",
+              "fill": "#0F172A",
+              "fontSize": 14,
+              "id": "PDS_incorrect_item2",
+              "textColor": "#0F172A",
+              "type": "text"
+            },
+            {
+              "content": "- 代わりに",
+              "fill": "#0F172A",
+              "fontSize": 14,
+              "id": "PDS_incorrect_item3",
+              "textColor": "#0F172A",
+              "type": "text"
+            }
+          ],
+          "cornerRadius": 14,
+          "fill": "#FFFFFF",
+          "gap": 8,
+          "id": "PDS_incorrect_list",
+          "layout": "vertical",
+          "name": "不正解一覧",
+          "padding": 14,
+          "type": "frame",
+          "width": "fill_container"
+        }
+      ],
+      "fill": "#F7F9FC",
+      "gap": 14,
+      "height": 844,
+      "id": "PDS1",
+      "layout": "vertical",
+      "name": "成績詳細画面",
+      "padding": 20,
+      "type": "frame",
+      "width": 390,
+      "x": 0,
+      "y": 0
+    }
+  ],
+  "version": "2.8"
+}

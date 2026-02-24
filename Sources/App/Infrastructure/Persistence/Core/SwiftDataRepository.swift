@@ -1,15 +1,13 @@
-// このファイルは自動生成されています
-
 import Foundation
 import SwiftData
 
 @MainActor
-public final class SwiftDataRepository<Mapper: BiMapper>: RepositoryBaseFunctionProtocol where Mapper.Domain.ID == Mapper.Persistent.ID {
+public final class SwiftDataRepository<Mapper: BiMapper>: RepositoryBaseFunctionProtocol {
     public typealias Domain = Mapper.Domain
     public typealias Persistent = Mapper.Persistent
 
-    public let context: ModelContext
-    public let mapper: Mapper
+    let context: ModelContext
+    let mapper: Mapper
 
     public init(context: ModelContext, mapper: Mapper) {
         self.context = context
@@ -20,7 +18,15 @@ public final class SwiftDataRepository<Mapper: BiMapper>: RepositoryBaseFunction
         do {
             let descriptor = FetchDescriptor<Persistent>()
             let persistents = try context.fetch(descriptor)
-            return try persistents.map { try mapper.toDomain($0) }
+            return try persistents.map { persistent in
+                do {
+                    return try mapper.toDomain(persistent)
+                } catch {
+                    throw RepositoryError.conversionFailed(error)
+                }
+            }
+        } catch let error as RepositoryError {
+            throw error
         } catch {
             throw RepositoryError.innerError(error)
         }
@@ -29,11 +35,16 @@ public final class SwiftDataRepository<Mapper: BiMapper>: RepositoryBaseFunction
     public func fetch(id: Domain.ID) async throws -> Domain? {
         do {
             let descriptor = FetchDescriptor<Persistent>()
-            let persistents = try context.fetch(descriptor)
-            guard let persistent = persistents.first(where: { $0.id == id }) else {
+            guard let persistent = try context.fetch(descriptor).first(where: { $0.id == id }) else {
                 return nil
             }
-            return try mapper.toDomain(persistent)
+            do {
+                return try mapper.toDomain(persistent)
+            } catch {
+                throw RepositoryError.conversionFailed(error)
+            }
+        } catch let error as RepositoryError {
+            throw error
         } catch {
             throw RepositoryError.innerError(error)
         }
@@ -52,12 +63,13 @@ public final class SwiftDataRepository<Mapper: BiMapper>: RepositoryBaseFunction
     public func update(_ domain: Domain) async throws {
         do {
             let descriptor = FetchDescriptor<Persistent>()
-            let persistents = try context.fetch(descriptor)
-            guard let target = persistents.first(where: { $0.id == domain.id }) else {
-                throw SwiftDataRepositoryError.notFound
+            guard let persistent = try context.fetch(descriptor).first(where: { $0.id == domain.id }) else {
+                throw RepositoryError.updateTargetNotFound
             }
-            mapper.update(persistent: target, from: domain)
+            mapper.update(persistent: persistent, from: domain)
             try context.save()
+        } catch let error as RepositoryError {
+            throw error
         } catch {
             throw RepositoryError.innerError(error)
         }
@@ -66,18 +78,15 @@ public final class SwiftDataRepository<Mapper: BiMapper>: RepositoryBaseFunction
     public func delete(id: Domain.ID) async throws {
         do {
             let descriptor = FetchDescriptor<Persistent>()
-            let persistents = try context.fetch(descriptor)
-            guard let target = persistents.first(where: { $0.id == id }) else {
-                throw SwiftDataRepositoryError.notFound
+            guard let persistent = try context.fetch(descriptor).first(where: { $0.id == id }) else {
+                throw RepositoryError.deleteTargetNotFound
             }
-            context.delete(target)
+            context.delete(persistent)
             try context.save()
+        } catch let error as RepositoryError {
+            throw error
         } catch {
             throw RepositoryError.innerError(error)
         }
     }
-}
-
-private enum SwiftDataRepositoryError: Error {
-    case notFound
 }

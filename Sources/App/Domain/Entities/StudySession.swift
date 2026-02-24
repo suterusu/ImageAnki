@@ -1,100 +1,159 @@
-// このファイルは自動生成されています
-
+// 自動生成
 import Foundation
 
 public struct StudySession: Identifiable, Equatable, Sendable {
     public typealias ID = UUID
 
-    public var id: UUID { sessionID }
-    public let sessionID: UUID
-    public let mode: StudyMode
-    public let grade: SchoolGrade?
-    public let requestedCount: Int
+    public var id: UUID { studySessionID }
+    public let studySessionID: UUID
     public let startedAt: Date
-    public private(set) var finishedAt: Date?
+    public let mode: StudyMode
+    public let gradeFilter: SchoolGrade?
+    public let targetCount: StudyItemCount
+    public private(set) var status: StudySessionStatus
     public private(set) var answers: [StudyAnswer]
+    public let cardIDs: [UUID]
 
     private init(
-        sessionID: UUID,
-        mode: StudyMode,
-        grade: SchoolGrade?,
-        requestedCount: Int,
+        id: UUID,
         startedAt: Date,
-        finishedAt: Date?,
-        answers: [StudyAnswer]
+        mode: StudyMode,
+        gradeFilter: SchoolGrade?,
+        targetCount: StudyItemCount,
+        status: StudySessionStatus,
+        answers: [StudyAnswer],
+        cardIDs: [UUID]
     ) {
-        self.sessionID = sessionID
-        self.mode = mode
-        self.grade = grade
-        self.requestedCount = requestedCount
+        self.studySessionID = id
         self.startedAt = startedAt
-        self.finishedAt = finishedAt
+        self.mode = mode
+        self.gradeFilter = gradeFilter
+        self.targetCount = targetCount
+        self.status = status
         self.answers = answers
+        self.cardIDs = cardIDs
     }
 
     public static func make(
+        startedAt: Date,
         mode: StudyMode,
-        grade: SchoolGrade?,
-        requestedCount: Int
+        gradeFilter: SchoolGrade?,
+        targetCount: Int,
+        cardIDs: [UUID]
     ) -> Result<StudySession, StudySessionError> {
-        restore(
+        create(
             id: UUID(),
+            startedAt: startedAt,
             mode: mode,
-            grade: grade,
-            requestedCount: requestedCount,
-            startedAt: Date(),
-            finishedAt: nil,
-            answers: []
+            gradeFilter: gradeFilter,
+            targetCount: targetCount,
+            status: .inProgress,
+            answers: [],
+            cardIDs: cardIDs
         )
     }
 
     public static func restore(
         id: UUID,
-        mode: StudyMode,
-        grade: SchoolGrade?,
-        requestedCount: Int,
         startedAt: Date,
-        finishedAt: Date?,
-        answers: [StudyAnswer]
+        mode: StudyMode,
+        gradeFilter: SchoolGrade?,
+        targetCount: Int,
+        status: StudySessionStatus,
+        answers: [StudyAnswer],
+        cardIDs: [UUID]
     ) -> Result<StudySession, StudySessionError> {
-        guard requestedCount > 0 else { return .failure(.invalidRequestedCount) }
-        if mode == .normal && grade == nil {
-            return .failure(.gradeRequiredForNormalMode)
-        }
-
-        return .success(
-            StudySession(
-                sessionID: id,
-                mode: mode,
-                grade: grade,
-                requestedCount: requestedCount,
-                startedAt: startedAt,
-                finishedAt: finishedAt,
-                answers: answers
-            )
+        create(
+            id: id,
+            startedAt: startedAt,
+            mode: mode,
+            gradeFilter: gradeFilter,
+            targetCount: targetCount,
+            status: status,
+            answers: answers,
+            cardIDs: cardIDs
         )
     }
 
-    public mutating func recordAnswer(answer: StudyAnswer) {
-        answers.append(answer)
-    }
-
-    public mutating func finalize() {
-        finishedAt = Date()
-    }
-
-    public func summary() -> StudySessionSummary {
-        let correctCount = answers.filter { $0.judgment == .correct }.count
-        let incorrectCount = answers.filter { $0.judgment == .incorrect }.count
+    private static func create(
+        id: UUID,
+        startedAt: Date,
+        mode: StudyMode,
+        gradeFilter: SchoolGrade?,
+        targetCount: Int,
+        status: StudySessionStatus,
+        answers: [StudyAnswer],
+        cardIDs: [UUID]
+    ) -> Result<StudySession, StudySessionError> {
         do {
-            return try StudySessionSummary(correctCount: correctCount, incorrectCount: incorrectCount)
+            let count = try StudyItemCount(targetCount)
+            guard !cardIDs.isEmpty else { return .failure(.cardListIsEmpty) }
+            return .success(
+                StudySession(
+                    id: id,
+                    startedAt: startedAt,
+                    mode: mode,
+                    gradeFilter: gradeFilter,
+                    targetCount: count,
+                    status: status,
+                    answers: answers,
+                    cardIDs: cardIDs
+                )
+            )
+        } catch let error as StudyItemCountError {
+            return .failure(.targetCount(error))
         } catch {
-            preconditionFailure("StudySessionSummary should always be constructible with non-negative counts")
+            return .failure(.unknown)
         }
+    }
+
+    public var answeredCount: Int {
+        answers.count
+    }
+
+    public var isFinished: Bool {
+        answers.count >= targetCount.value
+    }
+
+    public var currentCardID: UUID? {
+        guard answers.count < cardIDs.count else { return nil }
+        return cardIDs[answers.count]
+    }
+
+    public mutating func recordAnswer(cardID: UUID, judgment: AnswerJudgment, answeredAt: Date) -> Result<Void, StudySessionError> {
+        guard status == .inProgress else { return .failure(.alreadyCompleted) }
+        guard answers.count < targetCount.value else { return .failure(.alreadyCompleted) }
+        switch StudyAnswer.make(cardID: cardID, judgment: judgment, answeredAt: answeredAt) {
+        case .success(let answer):
+            answers.append(answer)
+            _ = completeIfFinished()
+            return .success(())
+        case .failure:
+            return .failure(.unknown)
+        }
+    }
+
+    @discardableResult
+    public mutating func completeIfFinished() -> Bool {
+        if answers.count >= targetCount.value {
+            status = .completed
+            return true
+        }
+        return false
+    }
+
+    public func correctCount() -> Int {
+        answers.filter { $0.judgment == .correct }.count
+    }
+
+    public func incorrectCount() -> Int {
+        answers.filter { $0.judgment == .incorrect }.count
     }
 }
 
 public enum StudySessionError: Error, Equatable, Sendable {
-    case invalidRequestedCount
-    case gradeRequiredForNormalMode
+    case targetCount(StudyItemCountError)
+    case cardListIsEmpty
+    case alreadyCompleted
+    case unknown
 }

@@ -1,64 +1,55 @@
 import Foundation
-@testable import App
+import ImageAnki
 
-enum TestFactory {
-    static func word(
+extension WordCard {
+    static func test(
         id: UUID = UUID(),
-        grade: SchoolGrade = .middle1,
-        problemImageName: String = "problem.png",
-        answerImageName: String = "answer.png"
-    ) throws -> Word {
-        switch Word.restore(
+        grade: SchoolGrade = .junior1,
+        promptText: String = "apple",
+        meaningText: String = "りんご",
+        imagePNGName: String = "apple.png"
+    ) -> WordCard {
+        switch WordCard.restore(
             id: id,
             grade: grade,
-            problemImageName: problemImageName,
-            answerImageName: answerImageName
+            promptText: promptText,
+            meaningText: meaningText,
+            imagePNGName: imagePNGName
         ) {
-        case .success(let word):
-            return word
-        case .failure(let error):
-            throw error
+        case .success(let card):
+            return card
+        case .failure:
+            fatalError("failed to make test word card")
         }
     }
 
-    static func session(
+}
+
+extension StudySession {
+    static func test(
         id: UUID = UUID(),
-        mode: StudyMode = .normal,
-        grade: SchoolGrade? = .middle1,
-        requestedCount: Int = 1,
-        answers: [StudyAnswer] = []
-    ) throws -> StudySession {
+        startedAt: Date = Date(),
+        mode: StudyMode = .learning,
+        gradeFilter: SchoolGrade? = .junior1,
+        targetCount: Int = 1,
+        status: StudySessionStatus = .inProgress,
+        answers: [StudyAnswer] = [],
+        cardIDs: [UUID] = [UUID()]
+    ) -> StudySession {
         switch StudySession.restore(
             id: id,
+            startedAt: startedAt,
             mode: mode,
-            grade: grade,
-            requestedCount: requestedCount,
-            startedAt: Date(),
-            finishedAt: nil,
-            answers: answers
+            gradeFilter: gradeFilter,
+            targetCount: targetCount,
+            status: status,
+            answers: answers,
+            cardIDs: cardIDs
         ) {
         case .success(let session):
             return session
-        case .failure(let error):
-            throw error
-        }
-    }
-
-    static func answer(
-        id: UUID = UUID(),
-        wordID: UUID,
-        judgment: AnswerJudgment = .correct
-    ) throws -> StudyAnswer {
-        switch StudyAnswer.restore(
-            id: id,
-            wordID: wordID,
-            judgment: judgment,
-            answeredAt: Date()
-        ) {
-        case .success(let answer):
-            return answer
-        case .failure(let error):
-            throw error
+        case .failure:
+            fatalError("failed to make test session")
         }
     }
 }

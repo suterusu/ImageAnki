@@ -1,0 +1,162 @@
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "content": "学習セッション",
+              "fill": "#0F172A",
+              "fontSize": 20,
+              "fontWeight": "700",
+              "id": "SSS_title",
+              "textColor": "#0F172A",
+              "type": "text"
+            }
+          ],
+          "cornerRadius": 12,
+          "fill": "#FFFFFF",
+          "height": 52,
+          "id": "SSS_nav",
+          "name": "ナビバー",
+          "padding": 12,
+          "type": "frame",
+          "width": "fill_container"
+        },
+        {
+          "children": [
+            {
+              "content": "進捗 1 / 20",
+              "fill": "#0F172A",
+              "fontSize": 15,
+              "fontWeight": "600",
+              "id": "SSS_progress_text",
+              "textColor": "#0F172A",
+              "type": "text"
+            }
+          ],
+          "cornerRadius": 12,
+          "fill": "#FFFFFF",
+          "id": "SSS_progress",
+          "name": "進捗カード",
+          "padding": 12,
+          "type": "frame",
+          "width": "fill_container"
+        },
+        {
+          "children": [
+            {
+              "content": "現在の問題",
+              "fill": "#0F172A",
+              "fontSize": 16,
+              "fontWeight": "600",
+              "id": "SSS_card_title",
+              "textColor": "#0F172A",
+              "type": "text"
+            },
+            {
+              "children": [
+                {
+                  "content": "カード画像を表示",
+                  "fill": "#0F172A",
+                  "fontSize": 15,
+                  "fontWeight": "500",
+                  "id": "SSS_image_text",
+                  "textColor": "#0F172A",
+                  "type": "text"
+                }
+              ],
+              "cornerRadius": 14,
+              "fill": "#E2E8F0",
+              "height": 340,
+              "id": "SSS_image",
+              "layout": "vertical",
+              "name": "カード画像",
+              "padding": 16,
+              "type": "frame",
+              "width": "fill_container"
+            },
+            {
+              "content": "長押しで意味表示に切り替え",
+              "fill": "#475569",
+              "fontSize": 13,
+              "id": "SSS_hold_hint",
+              "textColor": "#475569",
+              "type": "text"
+            }
+          ],
+          "cornerRadius": 20,
+          "fill": "#FFFFFF",
+          "gap": 12,
+          "height": 500,
+          "id": "SSS_card",
+          "layout": "vertical",
+          "name": "問題カード",
+          "padding": 20,
+          "type": "frame",
+          "width": "fill_container"
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "content": "左スワイプ: 不正解",
+                  "fill": "#FFFFFF",
+                  "fontSize": 14,
+                  "fontWeight": "700",
+                  "id": "SSS_wrong_text",
+                  "textColor": "#FFFFFF",
+                  "type": "text"
+                }
+              ],
+              "cornerRadius": 14,
+              "fill": "#EF4444",
+              "id": "SSS_wrong",
+              "padding": 14,
+              "type": "frame",
+              "width": 169
+            },
+            {
+              "children": [
+                {
+                  "content": "右スワイプ: 正解",
+                  "fill": "#FFFFFF",
+                  "fontSize": 14,
+                  "fontWeight": "700",
+                  "id": "SSS_correct_text",
+                  "textColor": "#FFFFFF",
+                  "type": "text"
+                }
+              ],
+              "cornerRadius": 14,
+              "fill": "#22C55E",
+              "id": "SSS_correct",
+              "padding": 14,
+              "type": "frame",
+              "width": 169
+            }
+          ],
+          "gap": 12,
+          "id": "SSS_swipe_hint",
+          "layout": "horizontal",
+          "name": "判定ガイド",
+          "type": "frame",
+          "width": "fill_container"
+        }
+      ],
+      "fill": "#F7F9FC",
+      "gap": 16,
+      "height": 844,
+      "id": "SSS1",
+      "layout": "vertical",
+      "name": "学習セッション画面",
+      "padding": 20,
+      "type": "frame",
+      "width": 390,
+      "x": 0,
+      "y": 0
+    }
+  ],
+  "version": "2.8"
+}

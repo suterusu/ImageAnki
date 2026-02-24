@@ -1,7 +1,7 @@
-// このファイルは自動生成されています
-
+// 自動生成
 import Foundation
 
-public protocol StudySessionRepository: RepositoryBaseFunctionProtocol, Sendable where Domain == StudySession {
-    func save(session: StudySession) async throws
+@MainActor
+public protocol StudySessionRepository: RepositoryBaseFunctionProtocol where Domain == StudySession {
+    func fetchPerformanceSummaries() async throws -> [PerformanceSummary]
 }

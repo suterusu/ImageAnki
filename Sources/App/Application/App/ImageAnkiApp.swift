@@ -1,6 +1,3 @@
-// このファイルは自動生成されています
-
-import SwiftData
 import SwiftUI
 
 @main
@@ -11,9 +8,9 @@ struct ImageAnkiApp: App {
         WindowGroup {
             RootView()
                 .environment(\.wordChallengeStartScreenUseCase, dependencies.wordChallengeStartScreenUseCase)
-                .environment(\.studyCardScreenUseCase, dependencies.studyCardScreenUseCase)
-                .environment(\.studyResultScreenUseCase, dependencies.studyResultScreenUseCase)
-                .environment(\.problemListScreenUseCase, dependencies.problemListScreenUseCase)
+                .environment(\.studySessionScreenUseCase, dependencies.studySessionScreenUseCase)
+                .environment(\.performanceListScreenUseCase, dependencies.performanceListScreenUseCase)
+                .environment(\.performanceDetailScreenUseCase, dependencies.performanceDetailScreenUseCase)
                 .modelContainer(dependencies.modelContainer)
         }
     }

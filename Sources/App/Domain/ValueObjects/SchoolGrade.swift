@@ -1,7 +1,8 @@
-// このファイルは自動生成されています
+// 自動生成
+import Foundation
 
 public enum SchoolGrade: String, CaseIterable, Sendable {
-    case middle1
-    case middle2
-    case middle3
+    case junior1 = "中1"
+    case junior2 = "中2"
+    case junior3 = "中3"
 }

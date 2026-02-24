@@ -1,6 +1,7 @@
-// このファイルは自動生成されています
+// 自動生成
+import Foundation
 
-public enum AnswerJudgment: String, CaseIterable, Sendable {
-    case correct
-    case incorrect
+public enum AnswerJudgment: String, CaseIterable, Sendable, Codable {
+    case correct = "正解"
+    case incorrect = "不正解"
 }

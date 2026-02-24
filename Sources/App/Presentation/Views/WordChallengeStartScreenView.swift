@@ -1,113 +1,116 @@
-// このファイルは自動生成されています
-
 import SwiftUI
 
 public struct WordChallengeStartScreenView: View, EffectHandlingView {
     @Environment(\.wordChallengeStartScreenUseCase) private var useCase
-    @Environment(AppState.self) public var appState
-    @State public var viewState = WordChallengeStartScreenViewState()
+    @Environment(AppState.self) private var appState
 
-    @State private var customCountText: String = ""
+    @State private var viewState = WordChallengeStartScreenViewState()
 
     public init() {}
 
     public var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                Text("単語挑戦を始める")
-                    .font(.title)
-                    .fontWeight(.bold)
-
-                Text("学年")
+                Text("学年と学習数を選んで開始")
                     .font(.headline)
-                HStack(spacing: 8) {
-                    ForEach(SchoolGrade.allCases, id: \.self) { grade in
-                        Button(label(for: grade)) {
-                            viewState.selectedGrade = grade
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .tint(viewState.selectedGrade == grade ? .blue : .gray)
+
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("学年")
+                        .font(.subheadline.weight(.semibold))
+                    Picker("学年", selection: $viewState.selectedGrade) {
+                        Text("中1").tag(SchoolGrade.junior1)
+                        Text("中2").tag(SchoolGrade.junior2)
+                        Text("中3").tag(SchoolGrade.junior3)
                     }
+                    .pickerStyle(.segmented)
                 }
+                .padding(14)
+                .background(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 14))
 
-                Text("学習数")
-                    .font(.headline)
-                HStack(spacing: 8) {
-                    ForEach([10, 20, 30], id: \.self) { count in
-                        Button("\(count)") {
-                            viewState.selectedStudyCount = count
-                            customCountText = ""
-                        }
-                        .buttonStyle(.bordered)
-                        .tint(viewState.selectedStudyCount == count ? .blue : .gray)
-                    }
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("学習数")
+                        .font(.subheadline.weight(.semibold))
+                    TextField("20", text: $viewState.inputItemCountText)
+                        .keyboardType(.numberPad)
+                        .textFieldStyle(.roundedBorder)
                 }
+                .padding(14)
+                .background(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 14))
 
-                TextField("任意の学習数", text: $customCountText)
-                    .keyboardType(.numberPad)
-                    .textFieldStyle(.roundedBorder)
-
-                if let inputErrorMessage = viewState.inputErrorMessage {
-                    Text(inputErrorMessage)
-                        .foregroundStyle(.red)
+                if viewState.isInputErrorVisible {
+                    Text("学習数は1〜100で入力してください。")
                         .font(.footnote)
+                        .foregroundStyle(.red)
                 }
 
-                HStack(spacing: 12) {
-                    Button("学習する") {
-                        handle {
-                            await useCase.startNormalStudy(
-                                selectedGrade: viewState.selectedGrade,
-                                selectedStudyCount: viewState.selectedStudyCount,
-                                inputStudyCount: customCountText
-                            )
-                        }
-                    }
-                    .buttonStyle(.borderedProminent)
+                if let emptyMessage = viewState.emptyStateMessage {
+                    Text(emptyMessage)
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                }
 
-                    Button("復習する") {
-                        handle {
-                            await useCase.startReviewStudy(
-                                selectedStudyCount: viewState.selectedStudyCount,
-                                inputStudyCount: customCountText
-                            )
-                        }
+                Button {
+                    handle {
+                        await useCase.startLearning(
+                            grade: viewState.selectedGrade,
+                            itemCountText: viewState.inputItemCountText
+                        )
                     }
-                    .buttonStyle(.bordered)
+                } label: {
+                    Text("学習する")
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
+                        .background(Color.blue)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                }
+
+                Button {
+                    handle {
+                        await useCase.startReview(
+                            itemCountText: viewState.inputItemCountText
+                        )
+                    }
+                } label: {
+                    Text("復習する")
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
+                        .background(Color.green)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
             }
-            .padding()
+            .padding(16)
         }
+        .background(Color(.systemGroupedBackground))
         .overlay {
             if viewState.isLoading {
-                ProgressView()
+                ProgressView("読み込み中")
             }
         }
-        .alert(
-            "エラー",
-            isPresented: Binding(
-                get: { viewState.alertMessage != nil },
-                set: { isPresented in
-                    if !isPresented {
-                        viewState.alertMessage = nil
-                    }
-                }
-            )
-        ) {
-            Button("OK", role: .cancel) {}
-        } message: {
-            Text(viewState.alertMessage ?? "")
+        .bindAlert(alertState: $viewState.alertState) { alertEffect, buttonType in
+            handle {
+                await useCase.handleAlertResult(alertEffect, buttonType: buttonType)
+            }
         }
-        .task {
-            handle { await useCase.loadSelection() }
-        }
+        .navigationTitle("単語挑戦")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
     }
 
-    private func label(for grade: SchoolGrade) -> String {
-        switch grade {
-        case .middle1: return "中1"
-        case .middle2: return "中2"
-        case .middle3: return "中3"
+    private func handle(_ execute: @escaping @MainActor () async -> AsyncStream<WordChallengeStartViewEffect>) {
+        Task { @MainActor in
+            let stream = await execute()
+            for await effect in stream {
+                viewState.apply(effect)
+                if case .screen(let screenEffect) = effect {
+                    appState.apply(screenEffect.asAppEffect())
+                }
+            }
         }
     }
 }

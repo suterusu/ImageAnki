@@ -1,20 +1,23 @@
-// このファイルは自動生成されています
-
+// 自動生成
 import Foundation
 
-public enum WordChallengeStartScreenViewEffect: Equatable, Sendable {
-    case showSelectedGrade(SchoolGrade)
-    case showSelectedStudyCount(Int)
-    case showInputStudyCount(Int)
-    case clearInputError
-    case showInputError(WordChallengeStartScreenError)
+public enum WordChallengeStartScreenEffect: Equatable, Sendable {
     case showLoading
     case hideLoading
-    case showError(WordChallengeStartScreenError)
-    case navigateToStudyCard(UUID)
+    case showEmptyState(String)
+    case hideEmptyState
+    case clearInputError
+    case showInputError
+    case navigateToStudySession(sessionID: UUID)
 }
 
-extension WordChallengeStartScreenViewEffect: AppEffectConvertible {
+public enum WordChallengeStartAlertEffect: Equatable, Sendable {
+    case showError(WordChallengeStartError)
+}
+
+public typealias WordChallengeStartViewEffect = ViewEffect<WordChallengeStartScreenEffect, WordChallengeStartAlertEffect>
+
+extension WordChallengeStartScreenEffect: AppEffectConvertible {
     public func asAppEffect() -> AppEffect {
         .wordChallengeStart(self)
     }

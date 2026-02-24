@@ -1,179 +1,192 @@
-// このファイルは自動生成されています
-
+// 自動生成
 import Foundation
 
 @MainActor
-public protocol WordChallengeStartScreenUseCaseProtocol: Sendable {
-    func loadSelection() async -> AsyncStream<WordChallengeStartScreenViewEffect>
-    func startNormalStudy(
-        selectedGrade: SchoolGrade?,
-        selectedStudyCount: Int?,
-        inputStudyCount: String
-    ) async -> AsyncStream<WordChallengeStartScreenViewEffect>
-    func startReviewStudy(
-        selectedStudyCount: Int?,
-        inputStudyCount: String
-    ) async -> AsyncStream<WordChallengeStartScreenViewEffect>
+public protocol WordChallengeStartScreenUseCaseProtocol {
+    func startLearning(grade: SchoolGrade, itemCountText: String) async -> AsyncStream<WordChallengeStartViewEffect>
+    func startReview(itemCountText: String) async -> AsyncStream<WordChallengeStartViewEffect>
+    func handleAlertResult(
+        _ alertEffect: WordChallengeStartAlertEffect,
+        buttonType: ButtonType
+    ) async -> AsyncStream<WordChallengeStartViewEffect>
 }
 
 public struct UnimplementedWordChallengeStartScreenUseCase: WordChallengeStartScreenUseCaseProtocol {
     public nonisolated init() {}
 
-    public func loadSelection() async -> AsyncStream<WordChallengeStartScreenViewEffect> {
-        fatalError("loadSelection is not implemented")
+    public func startLearning(grade: SchoolGrade, itemCountText: String) async -> AsyncStream<WordChallengeStartViewEffect> {
+        fatalError("startLearning is not implemented")
     }
 
-    public func startNormalStudy(
-        selectedGrade: SchoolGrade?,
-        selectedStudyCount: Int?,
-        inputStudyCount: String
-    ) async -> AsyncStream<WordChallengeStartScreenViewEffect> {
-        fatalError("startNormalStudy is not implemented")
+    public func startReview(itemCountText: String) async -> AsyncStream<WordChallengeStartViewEffect> {
+        fatalError("startReview is not implemented")
     }
 
-    public func startReviewStudy(
-        selectedStudyCount: Int?,
-        inputStudyCount: String
-    ) async -> AsyncStream<WordChallengeStartScreenViewEffect> {
-        fatalError("startReviewStudy is not implemented")
+    public func handleAlertResult(
+        _ alertEffect: WordChallengeStartAlertEffect,
+        buttonType: ButtonType
+    ) async -> AsyncStream<WordChallengeStartViewEffect> {
+        fatalError("handleAlertResult is not implemented")
     }
 }
 
 @MainActor
 public struct WordChallengeStartScreenUseCase: WordChallengeStartScreenUseCaseProtocol {
-    private let wordRepository: any WordRepository
+    private let wordCardRepository: any WordCardRepository
     private let studySessionRepository: any StudySessionRepository
-    private let reviewPriorityService: any ReviewPriorityService
+    private let reviewSelectionService: any ReviewSelectionService
 
     public init(
-        wordRepository: any WordRepository,
+        wordCardRepository: any WordCardRepository,
         studySessionRepository: any StudySessionRepository,
-        reviewPriorityService: any ReviewPriorityService
+        reviewSelectionService: any ReviewSelectionService
     ) {
-        self.wordRepository = wordRepository
+        self.wordCardRepository = wordCardRepository
         self.studySessionRepository = studySessionRepository
-        self.reviewPriorityService = reviewPriorityService
+        self.reviewSelectionService = reviewSelectionService
     }
 
-    public func loadSelection() async -> AsyncStream<WordChallengeStartScreenViewEffect> {
+    public func startLearning(grade: SchoolGrade, itemCountText: String) async -> AsyncStream<WordChallengeStartViewEffect> {
         EffectStream.make { yield in
-            // 手順2,3: 学年選択肢と学習数選択肢を表示する
-            yield(.showSelectedGrade(.middle1))
-            yield(.showSelectedStudyCount(10))
-            yield(.clearInputError)
-        }
-    }
-
-    public func startNormalStudy(
-        selectedGrade: SchoolGrade?,
-        selectedStudyCount: Int?,
-        inputStudyCount: String
-    ) async -> AsyncStream<WordChallengeStartScreenViewEffect> {
-        EffectStream.make { yield in
-            // 手順2-A: 開始条件を検証する
-            guard let selectedGrade else {
-                yield(.showInputError(.gradeNotSelected))
+            // ユースケース2 基本フロー1: 学習開始要求を受け取り、入力値を検証する
+            // ユースケース2 入力不正時: 学習開始前にエラー表示して終了する
+            let targetCount: StudyItemCount
+            do {
+                guard let count = Int(itemCountText) else {
+                    yield(.screen(.showInputError))
+                    yield(.alert(.showError(.invalidStudyItemCount)))
+                    return
+                }
+                targetCount = try StudyItemCount(count)
+                yield(.screen(.clearInputError))
+            } catch {
+                yield(.screen(.showInputError))
+                yield(.alert(.showError(.invalidStudyItemCount)))
                 return
             }
 
-            let resolvedCount: Int?
-            if let selectedStudyCount {
-                resolvedCount = selectedStudyCount
-            } else if !inputStudyCount.isEmpty {
-                resolvedCount = Int(inputStudyCount)
-            } else {
-                resolvedCount = nil
-            }
-
-            guard let resolvedCount, resolvedCount > 0 else {
-                yield(.showInputError(.invalidStudyCount))
-                return
-            }
-
-            yield(.clearInputError)
-            yield(.showLoading)
-            defer { yield(.hideLoading) }
+            // ユースケース2 基本フロー2: ローディング状態を表示する
+            yield(.screen(.showLoading))
+            // ユースケース2 基本フロー4: ローディング状態を非表示にする
+            defer { yield(.screen(.hideLoading)) }
 
             do {
-                // 手順4: 選択学年の問題を学習数ぶん読み込む
-                let words = try await wordRepository.fetchByGrade(grade: selectedGrade, limit: resolvedCount)
-                guard words.count == resolvedCount else {
-                    yield(.showError(.wordsNotFound))
+                // ユースケース2 基本フロー3: 学年と学習数に合致する出題カードを読み込む
+                let cards = try await wordCardRepository.fetchByGrade(grade: grade, count: targetCount)
+                guard !cards.isEmpty else {
+                    // ユースケース2 分岐フローA 3-A,5-A,6-A: 0件時は空状態メッセージを表示して終了
+                    yield(.screen(.showEmptyState("対象の単語カードがありません。")))
                     return
                 }
 
-                switch StudySession.make(mode: .normal, grade: selectedGrade, requestedCount: resolvedCount) {
-                case .success(let session):
-                    try await studySessionRepository.save(session: session)
-                    // 手順6: 学習カード画面へ遷移する
-                    yield(.navigateToStudyCard(session.id))
-                case .failure:
-                    yield(.showError(.startFailed))
-                }
-            } catch {
-                yield(.showError(.startFailed))
-            }
-        }
-    }
-
-    public func startReviewStudy(
-        selectedStudyCount: Int?,
-        inputStudyCount: String
-    ) async -> AsyncStream<WordChallengeStartScreenViewEffect> {
-        EffectStream.make { yield in
-            // 手順2: 開始条件を検証する
-            let resolvedCount: Int?
-            if let selectedStudyCount {
-                resolvedCount = selectedStudyCount
-            } else if !inputStudyCount.isEmpty {
-                resolvedCount = Int(inputStudyCount)
-            } else {
-                resolvedCount = nil
-            }
-
-            guard let resolvedCount, resolvedCount > 0 else {
-                yield(.showInputError(.invalidStudyCount))
-                return
-            }
-
-            yield(.clearInputError)
-            yield(.showLoading)
-            defer { yield(.hideLoading) }
-
-            do {
-                // 手順4: 復習優先度順の問題を学習数ぶん選定する
-                let sessions = try await studySessionRepository.fetchAll()
-                let words = try await wordRepository.fetchAll()
-                let reviewWords = reviewPriorityService.selectReviewWords(
-                    sessions: sessions,
-                    from: words,
-                    limit: resolvedCount
+                // ユースケース2 基本フロー5: 読み込み済みカードで学習セッションを開始する
+                let sessionResult = StudySession.make(
+                    startedAt: Date(),
+                    mode: .learning,
+                    gradeFilter: grade,
+                    targetCount: cards.count,
+                    cardIDs: cards.map(\.id)
                 )
+                guard case .success(let session) = sessionResult else {
+                    yield(.alert(.showError(.startSessionFailed)))
+                    return
+                }
+                try await studySessionRepository.insert(session)
+                yield(.screen(.hideEmptyState))
+                // ユースケース2 基本フロー6: 学習セッション画面へ遷移する
+                yield(.screen(.navigateToStudySession(sessionID: session.id)))
+            } catch {
+                // ユースケース2 例外フローB 3-B,5-B,6-B: 読み込み失敗時はエラーアラートを表示して終了
+                yield(.alert(.showError(.fetchCardsFailed)))
+            }
+        }
+    }
 
-                guard reviewWords.count == resolvedCount else {
-                    yield(.showError(.reviewTargetsNotFound))
+    public func startReview(itemCountText: String) async -> AsyncStream<WordChallengeStartViewEffect> {
+        EffectStream.make { yield in
+            // ユースケース3 基本フロー1: 復習開始要求を受け取り、入力値を検証する
+            // ユースケース3 入力不正時: 復習開始前にエラー表示して終了する
+            let targetCount: StudyItemCount
+            do {
+                guard let count = Int(itemCountText) else {
+                    yield(.screen(.showInputError))
+                    yield(.alert(.showError(.invalidStudyItemCount)))
+                    return
+                }
+                targetCount = try StudyItemCount(count)
+                yield(.screen(.clearInputError))
+            } catch {
+                yield(.screen(.showInputError))
+                yield(.alert(.showError(.invalidStudyItemCount)))
+                return
+            }
+
+            // ユースケース3 基本フロー2: ローディング状態を表示する
+            yield(.screen(.showLoading))
+            // ユースケース3 基本フロー5: ローディング状態を非表示にする
+            defer { yield(.screen(.hideLoading)) }
+
+            do {
+                // ユースケース3 基本フロー3: 全学年の誤答履歴を読み込む
+                // ユースケース3 基本フロー4: 復習優先度順で出題カードを選定する
+                let sessions = try await studySessionRepository.fetchAll()
+                let ids = try reviewSelectionService.selectReviewCardIDs(
+                    sessions: sessions,
+                    targetCount: targetCount,
+                    now: Date()
+                )
+                guard !ids.isEmpty else {
+                    // ユースケース3 分岐フローA 4-A,6-A,7-A: 復習対象が0件のとき空状態を表示して終了
+                    yield(.screen(.showEmptyState("復習対象のカードがありません。")))
                     return
                 }
 
-                switch StudySession.make(mode: .review, grade: nil, requestedCount: resolvedCount) {
-                case .success(let session):
-                    try await studySessionRepository.save(session: session)
-                    // 手順6: 学習カード画面へ遷移する
-                    yield(.navigateToStudyCard(session.id))
-                case .failure:
-                    yield(.showError(.startFailed))
+                let cards = try await wordCardRepository.fetchByIDs(ids: ids)
+                guard !cards.isEmpty else {
+                    // ユースケース3 分岐フローA 4-A,6-A,7-A: 復習対象が0件のとき空状態を表示して終了
+                    yield(.screen(.showEmptyState("復習対象のカードがありません。")))
+                    return
                 }
+
+                // ユースケース3 基本フロー6: 選定済みカードで学習セッションを開始する
+                let sessionResult = StudySession.make(
+                    startedAt: Date(),
+                    mode: .review,
+                    gradeFilter: nil,
+                    targetCount: cards.count,
+                    cardIDs: cards.map(\.id)
+                )
+                guard case .success(let session) = sessionResult else {
+                    yield(.alert(.showError(.startSessionFailed)))
+                    return
+                }
+                try await studySessionRepository.insert(session)
+                yield(.screen(.hideEmptyState))
+                // ユースケース3 基本フロー7: 学習セッション画面へ遷移する
+                yield(.screen(.navigateToStudySession(sessionID: session.id)))
             } catch {
-                yield(.showError(.startFailed))
+                // ユースケース3 例外フローB 4-B,6-B,7-B: 選定失敗時はエラーアラートを表示して終了
+                yield(.alert(.showError(.reviewSelectionFailed)))
+            }
+        }
+    }
+
+    public func handleAlertResult(
+        _ alertEffect: WordChallengeStartAlertEffect,
+        buttonType: ButtonType
+    ) async -> AsyncStream<WordChallengeStartViewEffect> {
+        EffectStream.make { _ in
+            switch (alertEffect, buttonType) {
+            case (_, .cancel), (.showError, .confirm):
+                break
             }
         }
     }
 }
 
-public enum WordChallengeStartScreenError: Error, Equatable, Sendable {
-    case gradeNotSelected
-    case invalidStudyCount
-    case wordsNotFound
-    case reviewTargetsNotFound
-    case startFailed
+public enum WordChallengeStartError: Error, Equatable, Sendable {
+    case invalidStudyItemCount
+    case fetchCardsFailed
+    case reviewSelectionFailed
+    case startSessionFailed
 }

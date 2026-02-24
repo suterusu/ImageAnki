@@ -1,10 +1,11 @@
 import Foundation
+import ImageAnki
 
 extension AsyncStream {
     func collectAll() async -> [Element] {
         var values: [Element] = []
-        for await element in self {
-            values.append(element)
+        for await value in self {
+            values.append(value)
         }
         return values
     }

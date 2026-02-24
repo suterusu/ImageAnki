@@ -2,15 +2,15 @@
 
 ## 概要
 
-学年区分を表す列挙型。
+中学英単語の学年区分を表す列挙型。
 
 ## 列挙値
 
-- middle1
-- middle2
-- middle3
+- 中1
+- 中2
+- 中3
 
 ## 関連
 
-- [Word](Word.md)
+- [WordCard](WordCard.md)
 - [StudySession](StudySession.md)
