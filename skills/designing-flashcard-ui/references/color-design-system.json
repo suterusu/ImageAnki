@@ -1,0 +1,57 @@
+{
+  "primary": {
+    "name": "Blue",
+    "hex": "#1A8FE3",
+    "usage": "Primary actions, selected states, and navigation elements"
+  },
+  "secondary": {
+    "name": "Purple",
+    "hex": "#6610F2",
+    "usage": "Secondary actions, highlights, and alternative buttons"
+  },
+  "accent": {
+    "name": "Orange",
+    "hex": "#F37933",
+    "usage": "Call-to-action accents and notifications"
+  },
+  "success": {
+    "name": "Green",
+    "hex": "#28A745",
+    "usage": "Correct answers and success indicators"
+  },
+  "warning": {
+    "name": "Yellow",
+    "hex": "#FFC107",
+    "usage": "Warnings, caution messages, and pending states"
+  },
+  "error": {
+    "name": "Red",
+    "hex": "#D11149",
+    "usage": "Errors, incorrect answers, and destructive actions"
+  },
+  "background": {
+    "name": "Off-white",
+    "hex": "#F7F8FA",
+    "usage": "Main surfaces and backgrounds"
+  },
+  "surface": {
+    "name": "White",
+    "hex": "#FFFFFF",
+    "usage": "Cards and elevated surfaces"
+  },
+  "text_primary": {
+    "name": "Dark Gray",
+    "hex": "#212529",
+    "usage": "Primary text on light backgrounds"
+  },
+  "text_secondary": {
+    "name": "Medium Gray",
+    "hex": "#495057",
+    "usage": "Secondary text and labels"
+  },
+  "neutral_border": {
+    "name": "Light Gray",
+    "hex": "#DEE2E6",
+    "usage": "Dividers and borders"
+  }
+}
